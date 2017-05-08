@@ -1,8 +1,9 @@
 <h1>
   {{title}}
-  <input #rhymeInput id="typeahead-http" type="text" class="form-control" [ngbTypeahead]="search" placeholder="Rhyme search" />
+  <!--<input #rhymeInput id="typeahead-http" type="text" class="form-control" [ngbTypeahead]="search" placeholder="Rhyme search" />-->
   <span *ngIf="searching">searching...</span>
   {{currentWord}}
   <div class="form-control-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
   <button *ngFor="let hint of rhymeHints" (click)="newLine(hint)">{{hint}}</button>
+  <poem-line></poem-line>
 </h1>

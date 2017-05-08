@@ -11,13 +11,13 @@ export class RhymeService {
     if (term === '') {
       return Observable.of([]);
     }
-
     let rhymeUrl = `https://api.datamuse.com/words?rel_rhy=${term}`;
     let params = new URLSearchParams();
     
     return this.http
       .get(rhymeUrl, {search: params})
       .map(response => {
+        console.log(response.status);
         let words = response.json().map((rhyme)=>{
           return rhyme.word;
         });

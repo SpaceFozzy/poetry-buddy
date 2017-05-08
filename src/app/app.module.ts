@@ -8,10 +8,12 @@ import { AppComponent } from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { RhymeService } from "app/rhyme.service";
+import { PoemLineComponent } from './poem-line/poem-line.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PoemLineComponent
   ],
   imports: [
     BrowserModule,

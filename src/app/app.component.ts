@@ -19,32 +19,12 @@ export class AppComponent {
   model: any;
   searching = false;
   searchFailed = false;
-  mockWords = ["splash","mash","ash"];
   currentWord = "";
   rhymeHints = [];
+  lines = [];
 
 
   constructor(private _service: RhymeService) {}
-
-  search = (text$: Observable<string>) =>
-    text$
-      .debounceTime(300)
-      .distinctUntilChanged()
-      .do(() => this.searching = true)
-      .switchMap(words =>{
-        var lastWord = words.split(" ").pop();
-        this.currentWord = lastWord;
-        return this._service.search(lastWord)
-            .do(() => {
-              this.searchFailed = false;
-            })
-            .catch(() => {
-              this.rhymeHints = this.mockWords;
-              this.searchFailed = true;
-              return Observable.of(this.mockWords);
-            })
-        })
-      .do(() => this.searching = false);
 
     newLine(line) {
       console.log('new line');

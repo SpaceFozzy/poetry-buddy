@@ -1,0 +1,4 @@
+<p>
+    <input #rhymeInput id="typeahead-http" type="text" class="form-control" (keypress)="inputUpdate($event)" placeholder="Rhyme search" />
+    <button *ngFor="let hint of rhymeHints" (click)="hintSelected(hint)">{{hint}}</button>
+</p>
