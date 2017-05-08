@@ -1,3 +1,6 @@
 <h1>
   {{title}}
+  <input id="typeahead-http" type="text" class="form-control" [ngbTypeahead]="search" placeholder="Rhyme search" />
+  <span *ngIf="searching">searching...</span>
+  <div class="form-control-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
 </h1>
