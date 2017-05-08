@@ -19,6 +19,10 @@ export class AppComponent {
   model: any;
   searching = false;
   searchFailed = false;
+  mockWords = ["splash","mash","ash"];
+  currentWord = "";
+  rhymeHints = [];
+
 
   constructor(private _service: RhymeService) {}
 
@@ -27,15 +31,22 @@ export class AppComponent {
       .debounceTime(300)
       .distinctUntilChanged()
       .do(() => this.searching = true)
-      .switchMap(term =>{
-        console.log(term);
-        var term = term.split(" ").pop();
-        return this._service.search(term)
-            .do(() => this.searchFailed = false)
+      .switchMap(words =>{
+        var lastWord = words.split(" ").pop();
+        this.currentWord = lastWord;
+        return this._service.search(lastWord)
+            .do(() => {
+              this.searchFailed = false;
+            })
             .catch(() => {
+              this.rhymeHints = this.mockWords;
               this.searchFailed = true;
-              return Observable.of([]);
+              return Observable.of(this.mockWords);
             })
         })
       .do(() => this.searching = false);
+
+    newLine(line) {
+      console.log('new line');
+    }
 }

@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class RhymeService {
+  
   constructor(private http: Http) {}
 
   search(term: string) {
