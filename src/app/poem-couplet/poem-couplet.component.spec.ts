@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PoemLineComponent } from './poem-line.component';
+import { PoemCoupletComponent } from './poem-couplet.component';
 
-describe('PoemLineComponent', () => {
-  let component: PoemLineComponent;
-  let fixture: ComponentFixture<PoemLineComponent>;
+describe('PoemCoupletComponent', () => {
+  let component: PoemCoupletComponent;
+  let fixture: ComponentFixture<PoemCoupletComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PoemLineComponent ]
+      declarations: [ PoemCoupletComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PoemLineComponent);
+    fixture = TestBed.createComponent(PoemCoupletComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

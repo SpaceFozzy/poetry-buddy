@@ -22,11 +22,29 @@ export class AppComponent {
   currentWord = "";
   rhymeHints = [];
   lines = [];
+  stanzas = [
+    {
+      type: "couplet",
+      line1: "",
+      line2: ""
+    }
+  ]
 
 
   constructor(private _service: RhymeService) {}
 
-    newLine(line) {
+    insertCouplet(line) {
       console.log('new line');
+      let newCouplet = {
+        type: "couplet",
+        line1: "",
+        line2: ""
+      }
+      this.stanzas.push(newCouplet)
+    }
+
+    onHintsUpdated(hints: string[]){
+      console.log('updating hints', hints);
+      this.rhymeHints = hints;
     }
 }

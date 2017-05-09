@@ -17,7 +17,6 @@ export class RhymeService {
     return this.http
       .get(rhymeUrl, {search: params})
       .map(response => {
-        console.log(response.status);
         let words = response.json().map((rhyme)=>{
           return rhyme.word;
         });

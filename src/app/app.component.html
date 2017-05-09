@@ -1,9 +1,13 @@
 <h1>
   {{title}}
+</h1>
   <!--<input #rhymeInput id="typeahead-http" type="text" class="form-control" [ngbTypeahead]="search" placeholder="Rhyme search" />-->
   <span *ngIf="searching">searching...</span>
   {{currentWord}}
   <div class="form-control-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
-  <button *ngFor="let hint of rhymeHints" (click)="newLine(hint)">{{hint}}</button>
-  <poem-line></poem-line>
-</h1>
+  <div *ngFor="let stanza of stanzas">
+    <poem-couplet *ngIf="stanza.type=='couplet'" [line1]="stanza.line1" [line2]="stanza.line2" (onHintsUpdated)="onHintsUpdated($event)"></poem-couplet>
+  </div>
+  <span *ngFor="let hint of rhymeHints">{{hint}} </span>
+  <button (click)="insertCouplet()">Add A Couplet</button>
+

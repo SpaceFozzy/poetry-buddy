@@ -1,0 +1,35 @@
+input {
+    height: 1.75em;
+    border-radius: 5px;
+    background: #62b989;
+    list-style-type: none;
+    text-align: left;
+    font-size: 1.5em;
+    color: #eee;
+    border:none;
+    margin:10px;
+    width:600px;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.input:focus {
+    outline: none !important;
+    border:1px solid #57a57a;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #a3e0be;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #a3e0be;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #a3e0be;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #a3e0be;
+}
