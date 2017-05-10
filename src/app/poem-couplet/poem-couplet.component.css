@@ -1,5 +1,4 @@
-input {
-    height: 1.75em;
+.input {
     border-radius: 5px;
     background: #62b989;
     list-style-type: none;
@@ -9,8 +8,7 @@ input {
     border:none;
     margin:10px;
     width:600px;
-    padding-left:10px;
-    padding-right:10px;
+    padding: 10px;
 }
 
 .input:focus {
@@ -33,3 +31,10 @@ input {
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
    color:    #a3e0be;
 }
+
+.active-couplet {
+    background: #719ECE;
+    color: #eee;
+    margin-left: 20px;
+}
+

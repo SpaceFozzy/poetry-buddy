@@ -1,0 +1,12 @@
+#rhyme-panel {
+    position:fixed;
+    right:0;
+    top:0;
+    width:300px;
+    background: #434d55;
+    color: #eee;
+    height: 100%;
+}
+#rhyme-list {
+    list-style-type: none;
+}

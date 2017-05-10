@@ -8,6 +8,10 @@
   <div *ngFor="let stanza of stanzas">
     <poem-couplet *ngIf="stanza.type=='couplet'" [line1]="stanza.line1" [line2]="stanza.line2" (onHintsUpdated)="onHintsUpdated($event)"></poem-couplet>
   </div>
-  <span *ngFor="let hint of rhymeHints">{{hint}} </span>
+  <div id="rhyme-panel">
+    <ul id="rhyme-list">
+      <li *ngFor="let hint of rhymeHints">{{hint}} </li>
+    </ul>
+  </div>
   <button (click)="insertCouplet()">Add A Couplet</button>
 

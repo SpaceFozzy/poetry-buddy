@@ -19,6 +19,9 @@ export class PoemCoupletComponent implements OnInit {
   private rhymeHints = [];
   private searchFailed = false;
 
+  private line1Array: string[];
+
+  public focus = false;
   public inputObservable$ = this.inputSubject.asObservable();
   public currentWord = "";
 
@@ -48,8 +51,18 @@ export class PoemCoupletComponent implements OnInit {
     console.log("Hint selected", hint);
   }
 
-  inputUpdate($event){    
-    this.inputSubject.next($event.target.value);
+  inputUpdate1($event){  
+    let text = $event.target.innerText;
+    this.inputSubject.next($event.target.innerText);
+    
+  }
+
+  onBlur() {
+    this.focus = false;
+  }
+
+  onFocus() {
+    this.focus = true;
   }
 
 }
