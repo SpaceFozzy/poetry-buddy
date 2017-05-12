@@ -18,10 +18,12 @@ import { RhymeService } from "app/rhyme.service";
 export class AppComponent {
   model: any;
   searching = false;
+  showText = false;
   searchFailed = false;
-  currentWord = "";
+  currentWord = null;
   rhymeHints = [];
   lines = [];
+  isLoadingWord = false;
   stanzas = [
     {
       type: "couplet",
@@ -29,7 +31,6 @@ export class AppComponent {
       line2: ""
     }
   ]
-
 
   constructor(private _service: RhymeService) {}
 
@@ -46,5 +47,21 @@ export class AppComponent {
     onHintsUpdated(hints: string[]){
       console.log('updating hints', hints);
       this.rhymeHints = hints;
+      this.isLoadingWord = false;
+    }
+
+    onLoading(word: string) {
+      if (word) {
+        this.currentWord = word;
+        this.isLoadingWord = true;
+      }
+    }
+
+    toggleDone() {
+      if (this.showText) {
+        this.showText = false;
+      } else {
+        this.showText = true;
+      }
     }
 }

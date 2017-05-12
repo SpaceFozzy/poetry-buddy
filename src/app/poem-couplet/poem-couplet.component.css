@@ -9,12 +9,16 @@
     margin:10px;
     width:600px;
     padding: 10px;
+     -webkit-transition: margin-left 1s; /* Safari */
+    transition: margin-left 1s;
 }
 
 .input:focus {
     outline: none !important;
     border:1px solid #57a57a;
     box-shadow: 0 0 10px #719ECE;
+    margin-left: 20px;
+   
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -35,6 +39,11 @@
 .active-couplet {
     background: #719ECE;
     color: #eee;
-    margin-left: 20px;
 }
 
+.printed {
+    font-size: 1.5em;
+    padding: 10px;
+    color: #434d55;
+    margin:0;
+}
