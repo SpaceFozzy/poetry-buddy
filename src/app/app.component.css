@@ -11,9 +11,20 @@
     overflow-y:scroll;
 }
 #rhyme-list {
-    
+    font-weight:bold;
+    font-size:1.2em;
 }
 
 button {
+    padding:10px;
+    background-color:#719ECE;
+    border:none;
+    color:white;
+    font-size:1em;
+    cursor:pointer;
+    transition:200ms;
+}
 
+button:hover{
+    background-color:#3A5D81;
 }
