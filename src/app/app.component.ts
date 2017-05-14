@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 
 import { RhymeService } from "app/rhyme.service";
+import { PoemCoupletFocusService } from './poem-couplet/poem-couplet-focus.service';
 
 @Component({
   selector: 'app-root',
@@ -32,9 +33,19 @@ export class AppComponent {
     }
   ]
 
-  constructor(private _service: RhymeService) {}
+  constructor(private _service: RhymeService, private poemCoupletFocusService: PoemCoupletFocusService,) {}
 
-    insertCouplet(line) {
+    ngOnInit() {
+      this.poemCoupletFocusService.focusedCouplet$.subscribe((index) => {
+
+        if (index > this.stanzas.length -1) {
+          let newCouplet = this.insertCouplet();
+          this.poemCoupletFocusService.coupletFinished(index-1);
+        }
+      });
+    }
+
+    insertCouplet() {
       console.log('new line');
       let newCouplet = {
         type: "couplet",
@@ -42,6 +53,7 @@ export class AppComponent {
         line2: ""
       }
       this.stanzas.push(newCouplet)
+      return newCouplet;
     }
 
     onHintsUpdated(hints: string[]){
@@ -64,4 +76,5 @@ export class AppComponent {
         this.showText = true;
       }
     }
+
 }

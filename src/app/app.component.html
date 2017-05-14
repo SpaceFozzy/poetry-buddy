@@ -1,13 +1,15 @@
 <h1>
-  Poetry Writer
+  Poetry Buddy
 </h1>
   <!--<input #rhymeInput id="typeahead-http" type="text" class="form-control" [ngbTypeahead]="search" placeholder="Rhyme search" />-->
   
-  <h2>Start typing your poem. Rhyme suggestions will appear as you type.</h2>
+  <h2>Rhyme suggestions will appear as you type.</h2>
   <div class="form-control-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
-  <div *ngFor="let stanza of stanzas">
-    <poem-couplet *ngIf="stanza.type=='couplet'" [line1]="stanza.line1" [line2]="stanza.line2" [showText]="showText" (hintsUpdated)="onHintsUpdated($event)" (loading)="onLoading($event)"></poem-couplet>
-  </div>
+  
+  <section class="stanza" *ngFor="let stanza of stanzas; let i = index">
+    <poem-couplet  [line1]="stanza.line1" [line2]="stanza.line2" [showText]="showText" [coupletIndex]="i" (hintsUpdated)="onHintsUpdated($event)" (loading)="onLoading($event)" (stanzaCompleted)="onStanzaCompleted($event)"></poem-couplet>
+  </section>
+
   <div id="rhyme-panel">
     <div style="text-align:center;">
       <h2>Rhyme Suggestions</h2>

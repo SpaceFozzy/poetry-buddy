@@ -1,7 +1,9 @@
 
-    <input #coupletInput1 *ngIf="showText===false" [(ngModel)]="line1" type="text" class="form-control input" contenteditable="true" (keyup)="inputUpdate1($event)" (blur)="onBlur()" (focus)="onFocus1($event)">
-    <br *ngIf="showText===false"/>
-    <input #coupletInput2 *ngIf="showText===false" [(ngModel)]="line2" type="text" class="form-control input" contenteditable="true" [ngClass]="{'active-couplet': focus}" (blur)="onBlur()" (focus)="onFocus2($event)">
-    <p class="printed" *ngIf="showText">{{line1}}</p>
-    <p class="printed" *ngIf="showText">{{line2}}</p>
+    
+    <div class="couplet-stripe" [ngClass]="{'active-couplet-stripe': focus}">
+        <input #coupletInput1 *ngIf="showText===false" [(ngModel)]="line1" type="text" class="form-control input" contenteditable="true" (keyup)="inputUpdate1($event)" (blur)="onBlur()" (focus)="onFocus1($event)" autofocus>
+        <input #coupletInput2 *ngIf="showText===false" [(ngModel)]="line2" type="text" class="form-control input" contenteditable="true" (blur)="onBlur()" (focus)="onFocus2($event)" (keyup)="onLine2Keyup($event)">
+        <p class="printed" *ngIf="showText">{{line1}}</p>
+        <p class="printed" *ngIf="showText">{{line2}}</p>
+    </div>
 

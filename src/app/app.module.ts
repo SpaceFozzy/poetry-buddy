@@ -9,6 +9,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { RhymeService } from "app/rhyme.service";
 import { PoemCoupletComponent } from './poem-couplet/poem-couplet.component';
+import { PoemCoupletFocusService } from './poem-couplet/poem-couplet-focus.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { PoemCoupletComponent } from './poem-couplet/poem-couplet.component';
     NgbModule.forRoot(),
     JsonpModule
   ],
-  providers: [RhymeService],
+  providers: [RhymeService, PoemCoupletFocusService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

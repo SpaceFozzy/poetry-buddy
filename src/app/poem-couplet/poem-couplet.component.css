@@ -11,14 +11,16 @@
     padding: 10px;
      -webkit-transition: margin-left 1s; /* Safari */
     transition: margin-left 1s;
+    display:block;
 }
 
 .input:focus {
     outline: none !important;
     border:1px solid #57a57a;
-    box-shadow: 0 0 10px #719ECE;
+    /*box-shadow: 0 0 10px #719ECE;*/
     margin-left: 20px;
-   
+    background: #719ECE;
+    color: #eee;
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -36,14 +38,18 @@
    color:    #a3e0be;
 }
 
-.active-couplet {
-    background: #719ECE;
-    color: #eee;
-}
-
 .printed {
     font-size: 1.5em;
     padding: 10px;
     color: #434d55;
     margin:0;
+}
+
+.couplet-stripe {
+    padding:5px;
+}
+
+.active-couplet-stripe {
+    background-color: #434d55;
+    border-radius: 5px;
 }
