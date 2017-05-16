@@ -6,18 +6,18 @@
     font-size: 1.5em;
     color: #eee;
     border:none;
-    margin:10px;
-    width:600px;
+    width:100%;
+    max-width:600px;
     padding: 10px;
      -webkit-transition: margin-left 1s; /* Safari */
     transition: margin-left 1s;
     display:block;
+    margin-top:10px;
+    margin-bottom:10px;
 }
 
 .input:focus {
     outline: none !important;
-    border:1px solid #57a57a;
-    /*box-shadow: 0 0 10px #719ECE;*/
     margin-left: 20px;
     background: #719ECE;
     color: #eee;
@@ -52,4 +52,28 @@
 .active-couplet-stripe {
     background-color: #434d55;
     border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+
+    .couplet-stripe {
+        border-radius:0;
+    }
+
+    .input {
+        display:block;
+        width:90%;
+        margin-left:auto;
+        margin-right:auto;
+        font-size: 1em;
+    }
+
+    .input:focus {
+        outline: none !important;
+        margin-left:auto;
+        margin-right:auto;
+        background: #719ECE;
+        color: #eee;
+    }
+
 }

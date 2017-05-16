@@ -7,12 +7,17 @@
     color: #f9f6ee;
     height: 100%;
     padding-left:20px;
-    padding-right:20px;
     overflow-y:scroll;
 }
+h1,h2 {
+    padding-left:10px;
+    padding-right:10px;
+}
+
 #rhyme-list {
     font-weight:bold;
     font-size:1.2em;
+    padding-left:0;
 }
 
 button {
@@ -27,4 +32,45 @@ button {
 
 button:hover{
     background-color:#3A5D81;
+}
+
+@media (max-width: 600px) {
+
+    #rhyme-panel {
+        position:fixed;
+        bottom:0;
+        top:auto;
+        width:100%;
+        height:200px;
+    }
+
+    #rhyme-panel h2 {
+        display:none;
+    }
+
+    #rhyme-panel p {
+        display:inline-block;
+    }
+
+    #rhyme-list li {
+        display:inline;
+        font-weight:normal;
+    }
+
+    #rhyme-list {
+        padding:15px;
+    }
+    
+}
+
+@media (max-height: 500px) {
+     #rhyme-panel {
+        height:50px;
+    }
+
+    #rhyme-list {
+        display:inline;
+        white-space:nowrap;
+        
+    }
 }

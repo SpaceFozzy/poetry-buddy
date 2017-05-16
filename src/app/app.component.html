@@ -1,3 +1,4 @@
+<section id="writing-space">
 <h1>
   Poetry Buddy
 </h1>
@@ -9,6 +10,8 @@
   <section class="stanza" *ngFor="let stanza of stanzas; let i = index">
     <poem-couplet  [line1]="stanza.line1" [line2]="stanza.line2" [showText]="showText" [coupletIndex]="i" (hintsUpdated)="onHintsUpdated($event)" (loading)="onLoading($event)" (stanzaCompleted)="onStanzaCompleted($event)"></poem-couplet>
   </section>
+
+</section>
 
   <div id="rhyme-panel">
     <div style="text-align:center;">
@@ -24,8 +27,6 @@
     
     <p *ngIf="currentWord && !isLoadingWord && rhymeHints.length === 0"><em>No rhymes found for "{{currentWord}}"</em></p>
     <p *ngIf="currentWord && !isLoadingWord && rhymeHints.length > 0">Rhymes found for "{{currentWord}}"</p>
-    
-
     <ul *ngIf="!isLoadingWord" id="rhyme-list">
       <li *ngFor="let hint of rhymeHints">{{hint}} </li>
     </ul>
