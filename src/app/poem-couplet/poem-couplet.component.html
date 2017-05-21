@@ -1,9 +1,15 @@
 
     
     <div class="couplet-stripe" [ngClass]="{'active-couplet-stripe': focus}">
+        
         <input #coupletInput1 *ngIf="showText===false" [(ngModel)]="line1" type="text" class="form-control input" contenteditable="true" (keyup)="inputUpdate1($event)" (blur)="onBlur()" (focus)="onFocus1($event)" autofocus>
+        
+            <i *ngIf="focus" class="fa fa-arrow-left fa-2x" style="position:absolute;right:25px;color:#eee;margin-top:-46px;"></i>
+
         <input #coupletInput2 *ngIf="showText===false" [(ngModel)]="line2" type="text" class="form-control input" contenteditable="true" (blur)="onBlur()" (focus)="onFocus2($event)" (keyup)="onLine2Keyup($event)">
+
         <p class="printed" *ngIf="showText">{{line1}}</p>
+        
         <p class="printed" *ngIf="showText">{{line2}}</p>
     </div>
 

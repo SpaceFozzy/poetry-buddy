@@ -17,23 +17,24 @@
     <div style="text-align:center;">
       <h2>Rhyme Suggestions</h2>
     </div>
+
+    <div id="spinner-container" *ngIf="currentWord && isLoadingWord">
+      <i class="fa fa-spin fa-cog fa-5x"></i>
+    </div>
+
     <p *ngIf="currentWord === null"><em>Rhyme suggestions will appear here.</em></p>
     
     <p *ngIf="currentWord && isLoadingWord"> Loading rhymes for "{{currentWord}}"</p>
-    <div *ngIf="currentWord && isLoadingWord" style="text-align:center;">
-    
-      <i class="fa fa-spin fa-cog fa-5x" style="margin-top:50px;"></i>
-    </div>
     
     <p *ngIf="currentWord && !isLoadingWord && rhymeHints.length === 0"><em>No rhymes found for "{{currentWord}}" </em></p>
-    <p *ngIf="currentWord && !isLoadingWord && rhymeHints.length > 0">Rhymes found for "{{currentWord}}": </p>
+    <p *ngIf="currentWord && !isLoadingWord && rhymeHints.length > 0">Rhymes with "{{currentWord}}": </p>
     <ul *ngIf="!isLoadingWord" id="rhyme-list">
       <li *ngFor="let hint of rhymeHints">{{hint}} </li>
     </ul>
   </div>
-  <div style="margin-top:20px;margin-left:15px;margin-bottom:500px;">
+  <section id="button-container">
     <button *ngIf="showText===false" (click)="insertCouplet()"><i class="fa fa-plus"></i> Add A Couplet</button>
     <button *ngIf="showText===false" (click)="toggleDone()"><i class="fa fa-file-text"></i> View As Text</button>
     <button *ngIf="showText===true" (click)="toggleDone()"><i class="fa fa-edit"></i>  Edit</button>
-  </div>
+  </section>
 
