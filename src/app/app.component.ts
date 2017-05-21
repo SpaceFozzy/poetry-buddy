@@ -17,7 +17,7 @@ import { PoemCoupletFocusService } from './poem-couplet/poem-couplet-focus.servi
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  @ViewChild('writing-space') private writingSpace;
+  @ViewChild('writingSpace') private writingSpace;
   model: any;
   searching = false;
   showText = false;
@@ -44,9 +44,13 @@ export class AppComponent {
         }
       });
 
-       this.poemCoupletFocusService.focusedCoupletElement$.subscribe((elementReference) => {
-          console.log("scrolling", elementReference);
-          // this.writingSpace.scrollTo(0, elementReference.nativeElement.offsetTop, 500);
+       this.poemCoupletFocusService.focusedCoupletElement$.subscribe((elementReference) => {   
+         if (elementReference) {
+          document.body.scrollTop = elementReference.nativeElement.offsetTop-80;
+         }
+         
+          // console.log('body scrolltop, element offsetTop',document.body.scrollTop, elementReference.nativeElement.offsetTop);
+          
       });
     }
 
