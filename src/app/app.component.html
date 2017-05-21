@@ -8,7 +8,7 @@
   <div class="form-control-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
   
   <section class="stanza" *ngFor="let stanza of stanzas; let i = index">
-    <poem-couplet  [line1]="stanza.line1" [line2]="stanza.line2" [showText]="showText" [coupletIndex]="i" (hintsUpdated)="onHintsUpdated($event)" (loading)="onLoading($event)" (stanzaCompleted)="onStanzaCompleted($event)"></poem-couplet>
+    <poem-couplet  [line1]="stanza.line1" [line2]="stanza.line2" [showText]="showText" [coupletIndex]="i" (hintsUpdated)="onHintsUpdated($event)" (loading)="onLoading($event)" ></poem-couplet>
   </section>
 
 </section>

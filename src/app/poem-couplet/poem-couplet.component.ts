@@ -18,7 +18,6 @@ export class PoemCoupletComponent implements OnInit {
 
   @Output() hintsUpdated = new EventEmitter<string[]>();
   @Output() loading = new EventEmitter<string>();
-  @Output() stanzaCompleted = new EventEmitter<PoemCoupletComponent>();
 
   private inputSubject: BehaviorSubject<string> = new BehaviorSubject("");
   private searching = false;
@@ -32,10 +31,9 @@ export class PoemCoupletComponent implements OnInit {
   public inputObservable$ = this.inputSubject.asObservable();
   public currentWord = "";
 
-  constructor(private _service: RhymeService, private poemCoupletFocusService: PoemCoupletFocusService) { }
+  constructor(private _service: RhymeService, private poemCoupletFocusService: PoemCoupletFocusService, public elementRef: ElementRef) { }
 
   ngOnInit() {
-    console.log(this.coupletInput1);
 
     this.poemCoupletFocusService.focusedCouplet$.subscribe((index) => {
       if (index === this.coupletIndex) {
@@ -54,7 +52,6 @@ export class PoemCoupletComponent implements OnInit {
         var lastWord = words.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
         this.currentWord = lastWord;
         this.loading.emit(this.currentWord);
-        console.log(this.currentWord);
         this._service.search(lastWord)
           .subscribe((response) => {
             this.rhymeHints = response;
@@ -70,7 +67,6 @@ export class PoemCoupletComponent implements OnInit {
   }
 
   hintSelected(hint) {
-    console.log("Hint selected", hint);
   }
 
   inputUpdate1($event) {
@@ -89,10 +85,12 @@ export class PoemCoupletComponent implements OnInit {
     this.inputSubject.next($event.target.value.trim());
     this.loading.emit($event.target.value.split(" ").pop());
     this.focus = true;
+    this.poemCoupletFocusService.coupletFocussed(this);
   }
 
   onFocus2() {
     this.focus = true;
+    this.poemCoupletFocusService.coupletFocussed(this);
   }
 
   onLine2Keyup($event) {

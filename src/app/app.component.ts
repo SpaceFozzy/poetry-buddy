@@ -1,4 +1,4 @@
-import {Component, Injectable} from '@angular/core';
+import { Component, Injectable, ViewChild } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
@@ -17,6 +17,7 @@ import { PoemCoupletFocusService } from './poem-couplet/poem-couplet-focus.servi
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  @ViewChild('writing-space') private writingSpace;
   model: any;
   searching = false;
   showText = false;
@@ -37,16 +38,19 @@ export class AppComponent {
 
     ngOnInit() {
       this.poemCoupletFocusService.focusedCouplet$.subscribe((index) => {
-
         if (index > this.stanzas.length -1) {
           let newCouplet = this.insertCouplet();
           this.poemCoupletFocusService.coupletFinished(index-1);
         }
       });
+
+       this.poemCoupletFocusService.focusedCoupletElement$.subscribe((elementReference) => {
+          console.log("scrolling", elementReference);
+          // this.writingSpace.scrollTo(0, elementReference.nativeElement.offsetTop, 500);
+      });
     }
 
     insertCouplet() {
-      console.log('new line');
       let newCouplet = {
         type: "couplet",
         line1: "",
@@ -57,7 +61,6 @@ export class AppComponent {
     }
 
     onHintsUpdated(hints: string[]){
-      console.log('updating hints', hints);
       this.rhymeHints = hints;
       this.isLoadingWord = false;
     }
