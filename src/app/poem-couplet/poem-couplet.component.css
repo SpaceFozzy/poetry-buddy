@@ -52,6 +52,7 @@
 .active-couplet-stripe {
     background-color: #434d55;
     border-radius: 5px;
+    box-shadow: 0 0 7px rgb(76, 76, 76);
 }
 
 @media (max-width: 600px) {
