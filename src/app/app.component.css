@@ -44,8 +44,6 @@ button:hover{
     padding-left:0;
 }
 
-
-
 #button-container {
     margin-top:20px;
     margin-left:15px;
@@ -71,14 +69,18 @@ button:hover{
     }
 
     #spinner-container {
-        float:right;
-        position:relative;
+        float:none;
+        position:absolute;
+        text-align:center;
         padding:10px;
+        left:0;
+        right:0;
+        margin-left:auto;
+        margin-right:auto;
     }
 
     #spinner-container i {
-        margin-top:0;
-        font-size:2em;
+        margin-top:15%;
     }
 
     #rhyme-panel h2 {
@@ -87,23 +89,33 @@ button:hover{
 
     #rhyme-panel p {
         position:relative;
-        float:left;
+        float:none;
         margin-right: 10px;
         margin-left: 10px;
     }
 
-    #rhyme-list li {
-        display:inline;
-        font-weight:normal;
-        padding:10px;
-    }
-
-    #rhyme-list li:nth-child(odd)		{ background-color:#657380; }
-    #rhyme-list li:nth-child(even)		{ background-color:#798b99; }
-
-    #rhyme-list {
+     #rhyme-list {
         position:relative;
+        text-align: center;
     }
+
+    #rhyme-list li {
+        display: inline-block;
+        font-weight: normal;
+        padding: 10px;
+        margin: 0 2px 0 2px;
+        width: 40%;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        
+    }
+
+    #rhyme-list li:nth-child(4n+1)		{ background-color:#657380; }
+    #rhyme-list li:nth-child(4n+4)		{ background-color:#657380; }
+    
+    #rhyme-list li:nth-child(4n+3)		{ background-color:#798b99; }
+    #rhyme-list li:nth-child(4n+2)		{ background-color:#798b99; }
 
     #button-container {
         margin-top:10px;
@@ -116,8 +128,31 @@ button:hover{
         height:50px;
     }
 
+    #rhyme-panel p {
+        float:left;
+    }
+
     #rhyme-list {
-        white-space:nowrap;
+        white-space:nowrap;   
+    }
+
+    #rhyme-list li {
+        display:inline;
+    }
+
+    #spinner-container {
+        float:right;
+        position:relative;
+        padding:10px;
         
     }
+
+    #spinner-container i {
+        margin-top:0;
+        font-size:2em;
+    }
+
+    #rhyme-list li:nth-child(odd)		{ background-color:#657380; }
+    #rhyme-list li:nth-child(even)		{ background-color:#798b99; }
+
 }

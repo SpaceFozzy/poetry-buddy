@@ -6,7 +6,7 @@
 
         <input #coupletInput2 *ngIf="showText===false" [(ngModel)]="line2" type="text" class="form-control input" contenteditable="true" (blur)="onBlur()" (focus)="onFocus2($event)" (keyup)="onLine2Keyup($event)">
 
-            <i *ngIf="focus" class="fa fa-arrow-left fa-2x" style="position:absolute;right:25px;color:#eee;margin-top:-94px;"></i>
+            <i *ngIf="focus && !isLoadingWord && !unchanged" id="rhyme-indicator-icon"  class="fa fa-arrow-left fa-2x"></i>
 
         <p class="printed" *ngIf="showText">{{line1}}</p>
         

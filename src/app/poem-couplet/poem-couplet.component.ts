@@ -15,15 +15,16 @@ export class PoemCoupletComponent implements OnInit {
   @Input() line2: string;
   @Input() coupletIndex: number;
   @Input() showText: boolean;
+  @Input() isLoadingWord: boolean;
 
   @Output() hintsUpdated = new EventEmitter<string[]>();
   @Output() loading = new EventEmitter<string>();
 
   private inputSubject: BehaviorSubject<string> = new BehaviorSubject("");
-  private searching = false;
   private mockWords = [];
   private rhymeHints = [];
   private searchFailed = false;
+  private unchanged = true;
 
   private line1Array: string[];
 
@@ -48,7 +49,6 @@ export class PoemCoupletComponent implements OnInit {
     this.inputObservable$
       .debounceTime(300)
       .subscribe((words) => {
-
         var lastWord = words.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
         this.currentWord = lastWord;
         this.loading.emit(this.currentWord);
@@ -70,6 +70,8 @@ export class PoemCoupletComponent implements OnInit {
   }
 
   inputUpdate1($event) {
+    this.unchanged = false;
+
     this.checkForEnterPress(event);
     let text = $event.target.value;
     this.inputSubject.next($event.target.value.trim());
