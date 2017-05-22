@@ -25,7 +25,7 @@ button:hover{
     background: #434d55;
     color: #f9f6ee;
     height: 100%;
-    padding-left:20px;
+    
     overflow-y:scroll;
     box-shadow: 0 0 7px rgb(76, 76, 76);
 }
@@ -50,6 +50,15 @@ button:hover{
     margin-bottom:500px;
 }
 
+#writing-space {
+    padding-right: 300px;
+}
+
+.stanza {
+    width:100%;
+    padding-left:15px;
+}
+
 @media (max-width: 600px) {
 
     h1 {
@@ -58,6 +67,14 @@ button:hover{
 
     h2 {
         font-size:1em;
+    }
+
+    #writing-space {
+        padding-right: 0;
+    }
+
+    .stanza {
+        padding-left: 0;
     }
 
     #rhyme-panel {

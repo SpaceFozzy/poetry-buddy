@@ -1,3 +1,5 @@
+
+
 .input {
     border-radius: 5px;
     background: #62b989;
@@ -8,17 +10,15 @@
     border:none;
     width:100%;
     max-width:600px;
-    padding: 10px;
-     -webkit-transition: margin-left 1s; /* Safari */
-    transition: margin-left 1s;
+    padding: 10px 0 10px 10px;
     display:block;
     margin-top:10px;
     margin-bottom:10px;
+    margin-right:5px;
 }
 
 .input:focus {
     outline: none !important;
-    margin-left: 20px;
     background: #719ECE;
     color: #eee;
 }
@@ -46,12 +46,12 @@
 }
 
 .couplet-stripe {
-    padding:5px;
+    padding:5px 20px 5px 10px;
 }
 
 .active-couplet-stripe {
     background-color: #434d55;
-    border-radius: 5px;
+    border-radius: 5px 0 0 5px;
     box-shadow: 0 0 7px rgb(76, 76, 76);
 }
 
@@ -66,12 +66,13 @@
 @media (max-width: 600px) {
 
     .couplet-stripe {
+        padding:5px 0 5px 0;
         border-radius:0;
     }
 
     .input {
         display:block;
-        width:90%;
+        width:95%;
         margin-left:auto;
         margin-right:auto;
         font-size: 1em;
