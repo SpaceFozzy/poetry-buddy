@@ -1,5 +1,6 @@
-# Poetic
+# Poetry Buddy
 
+Poetry buddy is a web application that helps you write rhyming couplets by making rhyme suggestions as you type. The project uses the Datamuse API (http://www.datamuse.com/api/) to fetch rhymes.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.2.
 
 ## Development server
