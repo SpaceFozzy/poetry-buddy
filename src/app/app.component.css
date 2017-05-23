@@ -35,14 +35,32 @@ button:hover{
 }
 
 #spinner-container i {
+    position:absolute;
     margin-top:50px;
+    margin-left:auto;
+    margin-right:auto;
+    left:0;
+    right:0;
 }
 
+ #rhyme-panel p {
+    padding-left: 15px;
+}
 
 #rhyme-list {
     font-weight:bold;
-    padding-left:0;
+    padding: 0 10px 10px 10px;
 }
+
+#rhyme-list li {
+    padding: 10px;
+    margin: 5px 0 5px 0;
+    list-style-type:none;
+}
+
+#rhyme-list li:nth-child(odd)		{ background-color:#657380; }
+#rhyme-list li:nth-child(even)		{ background-color:#798b99; }
+
 
 #button-container {
     margin-top:20px;
@@ -56,7 +74,6 @@ button:hover{
 
 .stanza {
     width:100%;
-    padding-left:15px;
 }
 
 @media (max-width: 600px) {
@@ -114,18 +131,18 @@ button:hover{
      #rhyme-list {
         position:relative;
         text-align: center;
+        padding-left: 0;
     }
 
     #rhyme-list li {
         display: inline-block;
         font-weight: normal;
         padding: 10px;
-        margin: 0 2px 0 2px;
+        margin: 0 2px 1px 2px;
         width: 40%;
         white-space: nowrap;
         overflow-x: hidden;
-        text-overflow: ellipsis;
-        
+        text-overflow: ellipsis; 
     }
 
     #rhyme-list li:nth-child(4n+1)		{ background-color:#657380; }
@@ -150,7 +167,8 @@ button:hover{
     }
 
     #rhyme-list {
-        white-space:nowrap;   
+        white-space:nowrap;
+        padding:0; 
     }
 
     #rhyme-list li {
@@ -161,12 +179,12 @@ button:hover{
         float:right;
         position:relative;
         padding:10px;
-        
     }
 
     #spinner-container i {
         margin-top:0;
         font-size:2em;
+        position: relative;
     }
 
     #rhyme-list li:nth-child(odd)		{ background-color:#657380; }
