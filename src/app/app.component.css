@@ -76,7 +76,7 @@ button:hover{
     width:100%;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
 
     h1 {
         font-size:1.2em;
@@ -114,7 +114,7 @@ button:hover{
     }
 
     #spinner-container i {
-        margin-top:15%;
+        margin-top:50px;
     }
 
     #rhyme-panel h2 {
