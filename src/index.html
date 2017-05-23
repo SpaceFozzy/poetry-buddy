@@ -10,14 +10,70 @@
   
 </head>
 <body>
+
+  <app-root>
+
+    <h1 class="preloader bounceIn">Loading Poetry Buddy...</h1>  
+    
+  </app-root>
+
+
   <style>
+
     body {
       background: #f9f6ee;
       color: #aaaa9f;
       font-family: arial, sans-serif;
       margin:0;
     }
+
+    .preloader {
+      text-align:center;
+      margin-top: 30%;
+    }
+
+    /* from animate.css: */
+    /* https://github.com/daneden/animate.css/blob/master/animate.css */
+
+    @keyframes bounceIn {
+      from, 20%, 40%, 60%, 80%, to {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+      }
+
+      0% {
+        opacity: 0;
+        transform: scale3d(.3, .3, .3);
+      }
+
+      20% {
+        transform: scale3d(1.1, 1.1, 1.1);
+      }
+
+      40% {
+        transform: scale3d(.9, .9, .9);
+      }
+
+      60% {
+        opacity: 1;
+        transform: scale3d(1.03, 1.03, 1.03);
+      }
+
+      80% {
+        transform: scale3d(.97, .97, .97);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+      }
+    }
+
+    .bounceIn {
+      animation-name: bounceIn;
+      animation-duration: .75s;
+    }
+
   </style>
-  <app-root>Loading...</app-root>
+
 </body>
 </html>
