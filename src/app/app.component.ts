@@ -48,9 +48,7 @@ export class AppComponent {
          if (elementReference) {
           document.body.scrollTop = elementReference.nativeElement.offsetTop-80;
          }
-         
           // console.log('body scrolltop, element offsetTop',document.body.scrollTop, elementReference.nativeElement.offsetTop);
-          
       });
     }
 
