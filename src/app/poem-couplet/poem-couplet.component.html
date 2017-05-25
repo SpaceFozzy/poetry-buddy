@@ -8,7 +8,7 @@
 
         <i *ngIf="focus && !isLoadingWord && !unchanged" id="rhyme-indicator-icon"  class="fa fa-arrow-left fa-2x"></i>
 
-       <rhyme-suggestion [currentWord]="currentWord" [isLoadingWord]="isLoadingWord" [rhymeHints]="rhymeHints"></rhyme-suggestion>
+       <rhyme-suggestion *ngIf="focus" [currentWord]="currentWord" [searchText]="searchText" [isLoading]="isLoading" [rhymeHints]="rhymeHints"></rhyme-suggestion>
 
         <p class="printed" *ngIf="showText">{{line1}}</p>
         

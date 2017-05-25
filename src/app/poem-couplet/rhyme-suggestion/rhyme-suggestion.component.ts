@@ -9,7 +9,8 @@ import { Component, OnInit, Input } from '@angular/core';
 
 export class RhymeSuggestionComponent implements OnInit {
     @Input() currentWord: string = null;
-    @Input() isLoadingWord: boolean;
+    @Input() searchText: string = null;
+    @Input() isLoading: boolean;
     @Input() rhymeHints: string[];
 
     constructor() { }

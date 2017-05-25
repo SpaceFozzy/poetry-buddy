@@ -15,22 +15,22 @@ export class PoemCoupletComponent implements OnInit {
   @Input() line2: string;
   @Input() coupletIndex: number;
   @Input() showText: boolean;
-  @Input() isLoadingWord: boolean;
 
   @Output() hintsUpdated = new EventEmitter<string[]>();
-  @Output() loading = new EventEmitter<string>();
 
   private inputSubject: BehaviorSubject<string> = new BehaviorSubject("");
   private mockWords = [];
   private rhymeHints = [];
   private searchFailed = false;
   private unchanged = true;
+  private isLoading = false;
 
   private line1Array: string[];
 
   public focus = false;
   public inputObservable$ = this.inputSubject.asObservable();
   public currentWord = "";
+  public searchText: string = null;
 
   constructor(private _service: RhymeService, private poemCoupletFocusService: PoemCoupletFocusService, public elementRef: ElementRef) { }
 
@@ -49,18 +49,22 @@ export class PoemCoupletComponent implements OnInit {
     this.inputObservable$
       .debounceTime(300)
       .subscribe((words) => {
-        var lastWord = words.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+        let lastWord = words.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
         this.currentWord = lastWord;
-        this.loading.emit(this.currentWord);
+        this.isLoading = true;
         this._service.search(lastWord)
           .subscribe((response) => {
             this.rhymeHints = response;
             this.hintsUpdated.emit(response);
+            
             this.searchFailed = false;
+            this.isLoading = false;
           }, (error) => {
             this.rhymeHints = this.mockWords;
             this.hintsUpdated.emit(this.mockWords);
+            
             this.searchFailed = true;
+            this.isLoading = false;
           })
       });
 
@@ -70,12 +74,16 @@ export class PoemCoupletComponent implements OnInit {
   }
 
   inputUpdate1($event) {
+    let words = $event.target.value.trim();
+    
+    this.searchText = words.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+
+    this.isLoading = true;
     this.unchanged = false;
 
     this.checkForEnterPress(event);
-    let text = $event.target.value;
-    this.inputSubject.next($event.target.value.trim());
-    this.loading.emit($event.target.value.split(" ").pop());
+    this.inputSubject.next(words);
+    
   }
 
   onBlur() {
@@ -83,9 +91,7 @@ export class PoemCoupletComponent implements OnInit {
   }
 
   onFocus1($event) {
-    let text = $event.target.value;
     this.inputSubject.next($event.target.value.trim());
-    this.loading.emit($event.target.value.split(" ").pop());
     this.focus = true;
     this.poemCoupletFocusService.coupletFocussed(this);
   }

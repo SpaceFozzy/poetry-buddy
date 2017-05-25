@@ -25,7 +25,6 @@ export class AppComponent {
   currentWord = null;
   rhymeHints = [];
   lines = [];
-  isLoadingWord = false;
   stanzas = [
     {
       type: "couplet",
@@ -63,14 +62,6 @@ export class AppComponent {
 
     onHintsUpdated(hints: string[]){
       this.rhymeHints = hints;
-      this.isLoadingWord = false;
-    }
-
-    onLoading(word: string) {
-      if (word) {
-        this.currentWord = word;
-        this.isLoadingWord = true;
-      }
     }
 
     toggleDone() {
