@@ -45,10 +45,9 @@ export class AppComponent {
       });
 
        this.poemCoupletFocusService.focusedCoupletElement$.subscribe((elementReference) => {   
-         if (elementReference) {
-          document.body.scrollTop = elementReference.nativeElement.offsetTop-80;
-         }
-          // console.log('body scrolltop, element offsetTop',document.body.scrollTop, elementReference.nativeElement.offsetTop);
+        //  if (elementReference) {
+        //   document.body.scrollTop = elementReference.nativeElement.offsetTop-80;
+        //  }
       });
     }
 
