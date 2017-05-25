@@ -11,10 +11,13 @@ import { RhymeService } from "app/rhyme.service";
 import { PoemCoupletComponent } from './poem-couplet/poem-couplet.component';
 import { PoemCoupletFocusService } from './poem-couplet/poem-couplet-focus.service';
 
+import { RhymeSuggestionComponent } from './poem-couplet/rhyme-suggestion/rhyme-suggestion.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    PoemCoupletComponent
+    PoemCoupletComponent,
+    RhymeSuggestionComponent
   ],
   imports: [
     BrowserModule,

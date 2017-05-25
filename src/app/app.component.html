@@ -6,33 +6,14 @@
   <div class="form-control-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
   
   <section class="stanza" *ngFor="let stanza of stanzas; let i = index">
-    <poem-couplet  [line1]="stanza.line1" [line2]="stanza.line2" [showText]="showText" [coupletIndex]="i" (hintsUpdated)="onHintsUpdated($event)" (loading)="onLoading($event)" [isLoadingWord]="isLoadingWord" ></poem-couplet>
+    <poem-couplet [line1]="stanza.line1" [line2]="stanza.line2" [showText]="showText" [coupletIndex]="i" (hintsUpdated)="onHintsUpdated($event)" (loading)="onLoading($event)" [isLoadingWord]="isLoadingWord" ></poem-couplet>
   </section>
 
 </section>
-
-  <div id="rhyme-panel">
-    <div style="text-align:center;">
-      <h2>Rhyme Suggestions</h2>
-    </div>
-
-    <div id="spinner-container" *ngIf="currentWord && isLoadingWord">
-      <i class="fa fa-spin fa-cog fa-5x"></i>
-    </div>
-
-    <p *ngIf="currentWord === null"><em>Rhyme suggestions will appear here.</em></p>
-    
-    <p *ngIf="currentWord && isLoadingWord"> Loading rhymes for "{{currentWord}}"</p>
-    
-    <p *ngIf="currentWord && !isLoadingWord && rhymeHints.length === 0"><em>No rhymes found for "{{currentWord}}" </em></p>
-    <p *ngIf="currentWord && !isLoadingWord && rhymeHints.length > 0">Rhymes with "{{currentWord}}": </p>
-    <ul *ngIf="!isLoadingWord" id="rhyme-list">
-      <li *ngFor="let hint of rhymeHints">{{hint}} </li>
-    </ul>
-  </div>
-  <section id="button-container">
-    <button *ngIf="showText===false" (click)="insertCouplet()"><i class="fa fa-plus"></i> Add A Couplet</button>
-    <button *ngIf="showText===false" (click)="toggleDone()"><i class="fa fa-file-text"></i> View As Text</button>
-    <button *ngIf="showText===true" (click)="toggleDone()"><i class="fa fa-edit"></i>  Edit</button>
-  </section>
+  
+<section id="button-container">
+  <button *ngIf="showText===false" (click)="insertCouplet()"><i class="fa fa-plus"></i> Add A Couplet</button>
+  <button *ngIf="showText===false" (click)="toggleDone()"><i class="fa fa-file-text"></i> View As Text</button>
+  <button *ngIf="showText===true" (click)="toggleDone()"><i class="fa fa-edit"></i>  Edit</button>
+</section>
 

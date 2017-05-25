@@ -17,59 +17,11 @@ button:hover{
     background-color:#3A5D81;
 }
 
-#rhyme-panel {
-    position:fixed;
-    right:0;
-    top:0;
-    width:300px;
-    background: #434d55;
-    color: #f9f6ee;
-    height: 100%;
-    
-    overflow-y:scroll;
-    box-shadow: 0 0 7px rgb(76, 76, 76);
-}
-
-#spinner-container {
-    text-align:center;
-}
-
-#spinner-container i {
-    position:absolute;
-    margin-top:50px;
-    margin-left:auto;
-    margin-right:auto;
-    left:0;
-    right:0;
-}
-
- #rhyme-panel p {
-    padding-left: 15px;
-}
-
-#rhyme-list {
-    font-weight:bold;
-    padding: 0 10px 10px 10px;
-}
-
-#rhyme-list li {
-    padding: 10px;
-    margin: 5px 0 5px 0;
-    list-style-type:none;
-}
-
-#rhyme-list li:nth-child(odd)		{ background-color:#657380; }
-#rhyme-list li:nth-child(even)		{ background-color:#798b99; }
-
 
 #button-container {
     margin-top:20px;
     margin-left:15px;
     margin-bottom:500px;
-}
-
-#writing-space {
-    padding-right: 300px;
 }
 
 .stanza {
@@ -94,100 +46,8 @@ button:hover{
         padding-left: 0;
     }
 
-    #rhyme-panel {
-        position:fixed;
-        bottom:0;
-        top:auto;
-        width:100%;
-        height:30%;
-    }
-
-    #spinner-container {
-        float:none;
-        position:absolute;
-        text-align:center;
-        padding:10px;
-        left:0;
-        right:0;
-        margin-left:auto;
-        margin-right:auto;
-    }
-
-    #spinner-container i {
-        margin-top:50px;
-    }
-
-    #rhyme-panel h2 {
-        display:none;
-    }
-
-    #rhyme-panel p {
-        position:relative;
-        float:none;
-        margin-right: 10px;
-        margin-left: 10px;
-    }
-
-     #rhyme-list {
-        position:relative;
-        text-align: center;
-        padding-left: 0;
-    }
-
-    #rhyme-list li {
-        display: inline-block;
-        font-weight: normal;
-        padding: 10px;
-        margin: 0 2px 1px 2px;
-        width: 40%;
-        white-space: nowrap;
-        overflow-x: hidden;
-        text-overflow: ellipsis; 
-    }
-
-    #rhyme-list li:nth-child(4n+1)		{ background-color:#657380; }
-    #rhyme-list li:nth-child(4n+4)		{ background-color:#657380; }
-    
-    #rhyme-list li:nth-child(4n+3)		{ background-color:#798b99; }
-    #rhyme-list li:nth-child(4n+2)		{ background-color:#798b99; }
-
     #button-container {
         margin-top:10px;
     }
-
-}
-
-@media (max-height: 500px) {
-     #rhyme-panel {
-        height:50px;
-    }
-
-    #rhyme-panel p {
-        float:left;
-    }
-
-    #rhyme-list {
-        white-space:nowrap;
-        padding:0; 
-    }
-
-    #rhyme-list li {
-        display:inline;
-    }
-
-    #spinner-container {
-        float:right;
-        position:relative;
-        padding:10px;
-    }
-
-    #spinner-container i {
-        margin-top:0;
-        font-size:2em;
-        position: relative;
-    }
-
-    #rhyme-list li:nth-child(odd)		{ background-color:#657380; }
-    #rhyme-list li:nth-child(even)		{ background-color:#798b99; }
 
 }

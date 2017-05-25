@@ -1,0 +1,16 @@
+<div id="rhyme-panel">
+  
+  <div id="spinner-container" *ngIf="currentWord && isLoadingWord">
+    <i class="fa fa-spin fa-cog fa-5x"></i>
+  </div>
+
+  <p *ngIf="!currentWord"><em>Rhyme suggestions will appear here.</em></p>
+  
+  <p *ngIf="currentWord && isLoadingWord"> Loading rhymes for "{{currentWord}}"</p>
+  
+  <p *ngIf="currentWord && !isLoadingWord && rhymeHints.length === 0"><em>No rhymes found for "{{currentWord}}" </em></p>
+  <p *ngIf="currentWord && !isLoadingWord && rhymeHints.length > 0">Rhymes with "{{currentWord}}": </p>
+  <ul *ngIf="!isLoadingWord" id="rhyme-list">
+    <li *ngFor="let hint of rhymeHints">{{hint}} </li>
+  </ul>
+</div>
