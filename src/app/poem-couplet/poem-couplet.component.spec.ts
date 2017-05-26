@@ -1,3 +1,4 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PoemCoupletComponent } from './poem-couplet.component';
@@ -26,6 +27,7 @@ describe('PoemCoupletComponent', () => {
       imports: [ FormsModule ],
       declarations: [ PoemCoupletComponent ],
       providers: [{provide: RhymeService, useValue: rhymeServiceStub }, {provide: PoemCoupletFocusService, useValue: poemCoupletFocusServiceStub }],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));

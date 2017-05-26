@@ -29,7 +29,7 @@ export class PoemCoupletComponent implements OnInit {
 
   public focus = false;
   public inputObservable$ = this.inputSubject.asObservable();
-  public currentWord = "";
+  public currentWord: string = "";
   public searchText: string = null;
 
   constructor(private _service: RhymeService, private poemCoupletFocusService: PoemCoupletFocusService, public elementRef: ElementRef) { }
@@ -81,7 +81,7 @@ export class PoemCoupletComponent implements OnInit {
     this.isLoading = true;
     this.unchanged = false;
 
-    this.checkForEnterPress(event);
+    this.checkForEnterPress($event);
     this.inputSubject.next(words);
     
   }
@@ -102,7 +102,7 @@ export class PoemCoupletComponent implements OnInit {
   }
 
   onLine2Keyup($event) {
-    this.checkForEnterPress(event);
+    this.checkForEnterPress($event);
   }
 
   checkForEnterPress($event) {
