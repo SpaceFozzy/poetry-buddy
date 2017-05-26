@@ -52,14 +52,6 @@
     box-shadow: 0 0 7px rgb(76, 76, 76);
 }
 
-#rhyme-indicator-icon {
-    position:absolute;
-    right:25px;
-    color:#eee;
-    margin-top:-94px;
-    opacity: 0.5
-}
-
 @media (max-width: 600px) {
 
     .couplet-stripe {
