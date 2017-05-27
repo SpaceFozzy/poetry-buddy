@@ -1,12 +1,4 @@
 import { Component, Injectable, ViewChild } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/switchMap';
 
 import { RhymeService } from "app/rhyme.service";
 import { PoemCoupletFocusService } from './poem-couplet/poem-couplet-focus.service';
