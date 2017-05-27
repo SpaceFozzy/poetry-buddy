@@ -1,5 +1,6 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { PoemCoupletComponent } from './poem-couplet.component';
 import { FormsModule } from "@angular/forms";
@@ -35,10 +36,33 @@ describe('PoemCoupletComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PoemCoupletComponent);
     component = fixture.componentInstance;
+    component.showText = false;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have two visible input elements when showText is false', () => {
+    let inputCount = fixture.debugElement.nativeElement.querySelectorAll('input').length
+    expect(inputCount).toBe(2);
+  });
+
+  it('should have no visible input elements when showText is true', () => {
+    component.showText = true;
+    fixture.detectChanges();
+
+    let inputCount = fixture.debugElement.nativeElement.querySelectorAll('input').length
+    expect(inputCount).toBe(0);
+  });
+
+  it('should have two visible paragraph elements when showText is true', () => {
+    component.showText = true;
+    fixture.detectChanges();
+
+    let paragraphCount = fixture.debugElement.nativeElement.querySelectorAll('p').length
+    expect(paragraphCount).toBe(2);
+  });
+
 });
