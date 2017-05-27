@@ -5,6 +5,7 @@ h1,h2 {
 }
 
 button {
+    margin:10px;
     padding:10px;
     background-color:#719ECE;
     border:none;
@@ -12,6 +13,7 @@ button {
     font-size:1em;
     cursor:pointer;
     transition:200ms;
+    width:200px;
 }
 
 button:hover{
@@ -20,7 +22,7 @@ button:hover{
 
 
 #button-container {
-    margin-top:20px;
+    margin-top:10px;
     margin-left:15px;
     margin-bottom:500px;
     text-align:center;
@@ -30,7 +32,7 @@ button:hover{
     width:100%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
 
     h1 {
         font-size:1.2em;
@@ -38,6 +40,10 @@ button:hover{
 
     h2 {
         font-size:1em;
+    }
+
+    h1,h2 {
+        text-align:left;
     }
 
     #writing-space {
@@ -50,6 +56,16 @@ button:hover{
 
     #button-container {
         margin-top:10px;
+        margin-left:0;
+        margin-right:0;
+        padding-left:20px;
+        padding-right:20px;
+    }
+
+    button {
+        margin-left:0;
+        margin-right:0;
+        width:100%;
     }
 
 }
