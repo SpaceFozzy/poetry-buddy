@@ -9,8 +9,6 @@ import { PoemCoupletFocusService } from './poem-couplet/poem-couplet-focus.servi
 })
 export class AppComponent {
   @ViewChild('writingSpace') private writingSpace;
-  model: any;
-  searching = false;
   showText = false;
   searchFailed = false;
   currentWord = null;
