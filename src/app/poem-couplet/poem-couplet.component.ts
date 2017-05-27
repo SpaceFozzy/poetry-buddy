@@ -4,6 +4,10 @@ import { RhymeService } from "app/rhyme.service";
 import { Observable } from "rxjs/Observable";
 import { PoemCoupletFocusService } from "./poem-couplet-focus.service";
 
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/map';
+
 @Component({
   selector: 'poem-couplet',
   templateUrl: './poem-couplet.component.html',

@@ -1,5 +1,4 @@
 import { Component, Injectable, ViewChild } from '@angular/core';
-
 import { RhymeService } from "app/rhyme.service";
 import { PoemCoupletFocusService } from './poem-couplet/poem-couplet-focus.service';
 
