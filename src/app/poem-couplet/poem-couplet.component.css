@@ -7,7 +7,7 @@
     color: #eee;
     border:none;
     width:100%;
-    max-width:600px;
+    max-width:750px;
     padding: 10px 0 10px 10px;
     display:block;
     margin-top:10px;
@@ -37,9 +37,16 @@
    color:    #a3e0be;
 }
 
+#printed-poem-container {
+    max-width:750px;
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
 .printed {
-    font-size: 1.5em;
-    padding: 10px;
+    font-size: 1em;
+    padding: 2px;
     color: #434d55;
     margin:0;
 }
