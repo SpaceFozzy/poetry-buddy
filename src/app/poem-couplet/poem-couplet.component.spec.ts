@@ -65,4 +65,20 @@ describe('PoemCoupletComponent', () => {
     expect(paragraphCount).toBe(2);
   });
 
+  it('the rhyme-suggestion element does not exist when focus is false', () => {
+    component.focus = false;
+    fixture.detectChanges();
+    
+    let rhymeSuggestionCount = fixture.debugElement.nativeElement.querySelectorAll('rhyme-suggestion').length
+    expect(rhymeSuggestionCount).toBe(0);
+  });
+  
+  it('the rhyme-suggestion element does exist when focus is true', () => {
+    component.focus = true;
+    fixture.detectChanges();
+
+    let rhymeSuggestionCount = fixture.debugElement.nativeElement.querySelectorAll('rhyme-suggestion').length
+    expect(rhymeSuggestionCount).toBe(1);
+  });
+
 });
