@@ -8,6 +8,7 @@ import { RhymeService } from "app/rhyme.service";
 import { PoemCoupletFocusService } from './poem-couplet/poem-couplet-focus.service';
 import { Subscription } from "rxjs/Subscription";
 import { Observable } from "rxjs/Observable";
+import { ComponentFixture } from "@angular/core/testing";
 
 /* Stub out the required services for testing */
 const rhymeServiceStub = {
@@ -20,6 +21,9 @@ const poemCoupletFocusServiceStub = {
 };
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ FormsModule ],
@@ -31,16 +35,46 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
   it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
+    fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
 
   it('should render "Poetry Buddy" in a h1 tag', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Poetry Buddy');
   }));
+
+  it('should show a poem-couplet component for every stanza', () => {
+      component.stanzas = [
+        {
+          type: "couplet1",
+          line1: "",
+          line2: ""
+        },
+        {
+          type: "couplet2",
+          line1: "",
+          line2: ""
+        },
+        {
+          type: "couplet3",
+          line1: "",
+          line2: ""
+        }
+      ]
+    fixture.detectChanges();
+
+    let coupletCount = fixture.debugElement.nativeElement.querySelectorAll('poem-couplet').length
+    expect(coupletCount).toBe(3);
+  });
+
 });
