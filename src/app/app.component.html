@@ -1,4 +1,4 @@
-<section #writingSpace id="writing-space">
+<section id="writing-space">
   <h1>Poetry Buddy</h1>
 
   <h2>Rhyme suggestions will appear as you type.</h2>
@@ -7,8 +7,14 @@
   <poem-couplet *ngFor="let stanza of stanzas; let i = index" [stanza]="stanza" [showText]="showText" [coupletIndex]="i" (hintsUpdated)="onHintsUpdated($event)"></poem-couplet>
 </section>
 
-  <section id="button-container">
-    <button *ngIf="!showText" (click)="insertCouplet()"><i class="fa fa-plus"></i> Add A Couplet</button>
-    <button *ngIf="!showText" (click)="toggleShowText()"><i class="fa fa-file-text"></i> View As Text</button>
-    <button *ngIf="showText" (click)="toggleShowText()"><i class="fa fa-edit"></i>  Edit</button>
-  </section>
+<section id="button-container">
+  <button *ngIf="!showText" (click)="insertCouplet()">
+    <i class="fa fa-plus"></i> Add A Couplet
+  </button>
+  <button *ngIf="!showText" (click)="toggleShowText()">
+    <i class="fa fa-file-text"></i> View As Text
+  </button>
+  <button *ngIf="showText" (click)="toggleShowText()">
+    <i class="fa fa-edit"></i>  Edit
+  </button>
+</section>

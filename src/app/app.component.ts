@@ -1,4 +1,4 @@
-import { Component, Injectable, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { RhymeService } from "app/rhyme.service";
 import { PoemCoupletFocusService } from './poem-couplet/poem-couplet-focus.service';
 
@@ -8,7 +8,6 @@ import { PoemCoupletFocusService } from './poem-couplet/poem-couplet-focus.servi
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  @ViewChild('writingSpace') private writingSpace;
   showText = false;
   searchFailed = false;
   currentWord = null;
@@ -20,7 +19,7 @@ export class AppComponent {
       line2: ""
     }
   ]
-
+  
   constructor(private _service: RhymeService, private poemCoupletFocusService: PoemCoupletFocusService,) {}
 
     ngOnInit() {
