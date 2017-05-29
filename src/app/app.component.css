@@ -28,10 +28,6 @@ button:hover{
     text-align:center;
 }
 
-.stanza {
-    width:100%;
-}
-
 @media (max-width: 600px) {
 
     h1 {
@@ -48,10 +44,6 @@ button:hover{
 
     #writing-space {
         padding-right: 0;
-    }
-
-    .stanza {
-        padding-left: 0;
     }
 
     #button-container {
