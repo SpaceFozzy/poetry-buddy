@@ -46,7 +46,7 @@ export class AppComponent {
       this.rhymeHints = hints;
     }
 
-    toggleDone() {
+    toggleShowText() {
       if (this.showText) {
         this.showText = false;
       } else {

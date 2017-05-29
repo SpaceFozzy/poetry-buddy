@@ -12,7 +12,7 @@
   
 <section id="button-container">
   <button *ngIf="showText===false" (click)="insertCouplet()"><i class="fa fa-plus"></i> Add A Couplet</button>
-  <button *ngIf="showText===false" (click)="toggleDone()"><i class="fa fa-file-text"></i> View As Text</button>
-  <button *ngIf="showText===true" (click)="toggleDone()"><i class="fa fa-edit"></i>  Edit</button>
+  <button *ngIf="showText===false" (click)="toggleShowText()"><i class="fa fa-file-text"></i> View As Text</button>
+  <button *ngIf="showText===true" (click)="toggleShowText()"><i class="fa fa-edit"></i>  Edit</button>
 </section>
 
