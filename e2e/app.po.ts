@@ -5,7 +5,7 @@ export class PoeticPage {
     return browser.get('/');
   }
 
-  getParagraphText() {
+  getHeaderText() {
     return element(by.css('app-root h1')).getText();
   }
 }

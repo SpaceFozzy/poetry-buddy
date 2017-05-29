@@ -13,7 +13,6 @@ export class AppComponent {
   searchFailed = false;
   currentWord = null;
   rhymeHints = [];
-  lines = [];
   stanzas = [
     {
       type: "couplet",

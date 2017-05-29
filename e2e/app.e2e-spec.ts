@@ -7,8 +7,8 @@ describe('poetic App', () => {
     page = new PoeticPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display a header saying Poetry Buddy', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getHeaderText()).toEqual('Poetry Buddy');
   });
 });

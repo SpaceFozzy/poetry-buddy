@@ -1,12 +1,11 @@
 <section #writingSpace id="writing-space">
 <h1>Poetry Buddy</h1>
-  <!--<input #rhymeInput id="typeahead-http" type="text" class="form-control" [ngbTypeahead]="search" placeholder="Rhyme search" />-->
   
   <h2>Rhyme suggestions will appear as you type.</h2>
   <div class="form-control-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
   
   <section class="stanza" *ngFor="let stanza of stanzas; let i = index">
-    <poem-couplet [line1]="stanza.line1" [line2]="stanza.line2" [showText]="showText" [coupletIndex]="i" (hintsUpdated)="onHintsUpdated($event)" ></poem-couplet>
+    <poem-couplet [lines]="stanza" [showText]="showText" [coupletIndex]="i" (hintsUpdated)="onHintsUpdated($event)" ></poem-couplet>
   </section>
 
 </section>

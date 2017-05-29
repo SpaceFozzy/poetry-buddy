@@ -56,17 +56,17 @@ describe('AppComponent', () => {
   it('should show a poem-couplet component for every stanza', () => {
       component.stanzas = [
         {
-          type: "couplet1",
+          type: "couplet",
           line1: "",
           line2: ""
         },
         {
-          type: "couplet2",
+          type: "couplet",
           line1: "",
           line2: ""
         },
         {
-          type: "couplet3",
+          type: "couplet",
           line1: "",
           line2: ""
         }

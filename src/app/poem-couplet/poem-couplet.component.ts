@@ -15,8 +15,7 @@ import 'rxjs/add/operator/map';
 })
 export class PoemCoupletComponent implements OnInit {
   @ViewChild('coupletInput1') private coupletInput1;
-  @Input() line1: string;
-  @Input() line2: string;
+  @Input() lines: object;
   @Input() coupletIndex: number;
   @Input() showText: boolean;
 
@@ -29,8 +28,6 @@ export class PoemCoupletComponent implements OnInit {
   private unchanged = true;
   private isLoading = false;
 
-  private line1Array: string[];
-
   public focus = false;
   public inputObservable$ = this.inputSubject.asObservable();
   public currentWord: string = "";
@@ -42,52 +39,77 @@ export class PoemCoupletComponent implements OnInit {
 
     this.poemCoupletFocusService.focusedCouplet$.subscribe((index) => {
       if (index === this.coupletIndex) {
-        if (this.coupletInput1) {
-          this.coupletInput1.nativeElement.focus()
-        } else {
-          setTimeout(()=>{this.coupletInput1.nativeElement.focus()},10); 
-        }
+        this.setFocusToThisCouplet();
       }
     });
 
     this.inputObservable$
       .debounceTime(300)
       .subscribe((words) => {
-        let lastWord = words.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
-        this.currentWord = lastWord;
-        this.isLoading = true;
-        this._service.search(lastWord)
-          .subscribe((response) => {
-            this.rhymeHints = response;
-            this.hintsUpdated.emit(response);
-            
-            this.searchFailed = false;
-            this.isLoading = false;
-          }, (error) => {
-            this.rhymeHints = this.mockWords;
-            this.hintsUpdated.emit(this.mockWords);
-            
-            this.searchFailed = true;
-            this.isLoading = false;
-          })
+        this.getRhymesForLastWordInPhrase(words);
       });
 
   }
 
-  hintSelected(hint) {
+  setFocusToThisCouplet() {
+    if (this.coupletInput1) {
+      this.coupletInput1.nativeElement.focus()
+    } else {
+      setTimeout(() => { this.coupletInput1.nativeElement.focus() }, 10);
+    }
+  }
+
+  getRhymesForLastWordInPhrase(phrase: string) {
+    let lastWord = phrase.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+    this.currentWord = lastWord;
+    this.isLoading = true;
+    this._service.search(lastWord)
+      .subscribe((response) => {
+        this.updateRhymeHints(response);
+      }, (error) => {
+        this.onRhymeHintsFail(error);
+      })
+  }
+
+  updateRhymeHints(hints: string[]) {
+    this.rhymeHints = hints;
+    this.hintsUpdated.emit(hints);
+
+    this.searchFailed = false;
+    this.isLoading = false;
+  }
+
+  onRhymeHintsFail(error) {
+    this.rhymeHints = this.mockWords;
+    this.hintsUpdated.emit(this.mockWords);
+
+    this.searchFailed = true;
+    this.isLoading = false;
   }
 
   inputUpdate1($event) {
     let words = $event.target.value.trim();
-    
+
     this.searchText = words.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
 
     this.isLoading = true;
     this.unchanged = false;
 
-    this.checkForEnterPress($event);
-    this.inputSubject.next(words);
-    
+    if (this.checkForEnterPress($event)) {
+      this.focusNextInput($event)
+    } else {
+      this.inputSubject.next(words);
+    }
+
+  }
+
+  focusNextInput($event) {
+    let nextElement = $event.target.nextElementSibling;
+    if (nextElement && 'type' in nextElement && nextElement.type === "text") {
+      nextElement.focus();
+    } else {
+      this.poemCoupletFocusService.coupletFinished(this.coupletIndex);
+    }
   }
 
   onBlur() {
@@ -110,15 +132,7 @@ export class PoemCoupletComponent implements OnInit {
   }
 
   checkForEnterPress($event) {
-    if ($event.keyCode === 13) {
-      let nextElement = $event.target.nextElementSibling;
-      if (nextElement && 'type' in nextElement && nextElement.type === "text") {
-        nextElement.focus();
-      } else {
-        this.poemCoupletFocusService.coupletFinished(this.coupletIndex);
-      }
-      return false;
-    }
+    return ($event.keyCode === 13)
   }
 
 }

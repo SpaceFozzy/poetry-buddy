@@ -37,6 +37,11 @@ describe('PoemCoupletComponent', () => {
     fixture = TestBed.createComponent(PoemCoupletComponent);
     component = fixture.componentInstance;
     component.showText = false;
+    component.lines = {
+          type: "couplet",
+          line1: "",
+          line2: ""
+        }
     fixture.detectChanges();
   });
 
