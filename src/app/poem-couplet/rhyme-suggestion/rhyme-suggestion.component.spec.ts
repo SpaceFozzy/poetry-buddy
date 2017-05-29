@@ -28,7 +28,7 @@ describe('RhymeSuggestionComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should give the user feedback when no rhymes are loaded', () => {
+  it('should give the user feedback before rhymes are loaded', () => {
     component.searchText = "";
     fixture.detectChanges();
 
