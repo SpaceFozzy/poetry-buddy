@@ -15,7 +15,7 @@ import 'rxjs/add/operator/map';
 })
 export class PoemCoupletComponent implements OnInit {
   @ViewChild('coupletInput1') private coupletInput1;
-  @Input() lines: object;
+  @Input() stanza: object;
   @Input() coupletIndex: number;
   @Input() showText: boolean;
 
