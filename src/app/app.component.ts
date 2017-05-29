@@ -30,12 +30,6 @@ export class AppComponent {
           this.poemCoupletFocusService.coupletFinished(index-1);
         }
       });
-
-       this.poemCoupletFocusService.focusedCoupletElement$.subscribe((elementReference) => {   
-        //  if (elementReference) {
-        //   document.body.scrollTop = elementReference.nativeElement.offsetTop-80;
-        //  }
-      });
     }
 
     insertCouplet() {
