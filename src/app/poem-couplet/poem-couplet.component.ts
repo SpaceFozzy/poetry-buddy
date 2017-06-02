@@ -94,7 +94,6 @@ export class PoemCoupletComponent implements OnInit {
 
     this.isLoading = true;
     this.unchanged = false;
-
     if (this.checkForEnterPress($event)) {
       this.focusNextInput($event)
     } else {
@@ -128,7 +127,9 @@ export class PoemCoupletComponent implements OnInit {
   }
 
   onLine2Keyup($event) {
-    this.checkForEnterPress($event);
+    if (this.checkForEnterPress($event)) {
+      this.focusNextInput($event)
+    }
   }
 
   checkForEnterPress($event) {
