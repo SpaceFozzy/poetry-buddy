@@ -26,20 +26,26 @@ export class PoemCoupletComponent implements OnInit {
   private searchFailed = false;
   private unchanged = true;
   private isLoading = false;
+
   public focus = false;
   public currentWord: string = "";
   public searchText: string = null;
 
-  constructor(private _service: RhymeService, private poemCoupletFocusService: PoemCoupletFocusService, public elementRef: ElementRef) { }
+  constructor(
+    private _service: RhymeService, 
+    private poemCoupletFocusService: PoemCoupletFocusService
+  ) { }
 
   ngOnInit() {
 
+    //Subscribe to the focus service to allow enter presses to change focus between components
     this.poemCoupletFocusService.focusedCouplet$.subscribe((index) => {
       if (index === this.coupletIndex) {
         this.setFocusToThisCouplet();
       }
     });
 
+    //Subscribe to the input observable to fetch rhymes as the input text changes.
     this.inputObservable$
       .debounceTime(300)
       .subscribe((words) => {
@@ -49,6 +55,7 @@ export class PoemCoupletComponent implements OnInit {
   }
 
   setFocusToThisCouplet() {
+    //If the user presses enter on the last line of the previous couplet, a new couplet will be created. If this couplet is brand new and hasn't had time to render, set a small delay to give it time to render before setting focus to the input.
     if (this.coupletInput1) {
       this.coupletInput1.nativeElement.focus()
     } else {
@@ -60,6 +67,7 @@ export class PoemCoupletComponent implements OnInit {
     let lastWord = phrase.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
     this.currentWord = lastWord;
     this.isLoading = true;
+
     this._service.search(lastWord)
       .subscribe((response) => {
         this.updateRhymeHints(response);
@@ -75,19 +83,17 @@ export class PoemCoupletComponent implements OnInit {
   }
 
   onRhymeHintsFail(error) {
-
     this.searchFailed = true;
     this.isLoading = false;
   }
 
   inputUpdate1($event) {
     let words = $event.target.value.trim();
-
     let newSearch = words.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
-
     this.searchText = newSearch;
-
     this.unchanged = false;
+
+    //If the key pressed is enter, switch focus to the next couplet rather than emitting a new input change. 
     if (this.checkForEnterPress($event)) {
       this.focusNextInput($event)
     } else {
@@ -98,6 +104,7 @@ export class PoemCoupletComponent implements OnInit {
   }
 
   focusNextInput($event) {
+    //If the next input element is the next input element sibling (i.e. going from line one to line two), focus on that element. Otherwise, let the couplet focus service handle switching focus to the next couplet in the poem.
     let nextElement = $event.target.nextElementSibling;
     if (nextElement && 'type' in nextElement && nextElement.type === "text") {
       nextElement.focus();
