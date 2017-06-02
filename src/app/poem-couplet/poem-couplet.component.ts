@@ -21,21 +21,21 @@ export class PoemCoupletComponent implements OnInit {
 
   //Observable sources
   private inputSubject: BehaviorSubject<string> = new BehaviorSubject("");
-  
+
   //Observable streams
   public inputObservable$ = this.inputSubject.asObservable();
-  
+
   private rhymeHints: string[] = [];
   private searchFailed: boolean = false;
   private unchanged: boolean = true;
   private isLoading: boolean = false;
 
-  public focus:boolean = false;
+  public focus: boolean = false;
   public currentWord: string = "";
   public searchText: string = null;
 
   constructor(
-    private _service: RhymeService, 
+    private _service: RhymeService,
     private poemCoupletFocusService: PoemCoupletFocusService,
     public elementRef: ElementRef //Used as a hook by the poem-couplet-focus service
   ) { }
@@ -58,7 +58,7 @@ export class PoemCoupletComponent implements OnInit {
 
   }
 
-  setFocusToThisCouplet() : void {
+  setFocusToThisCouplet(): void {
     if (this.coupletInput1) {
       this.coupletInput1.nativeElement.focus()
     } else {
@@ -67,7 +67,7 @@ export class PoemCoupletComponent implements OnInit {
     }
   }
 
-  getRhymesForLastWordInPhrase(phrase: string) : void {
+  getRhymesForLastWordInPhrase(phrase: string): void {
     let lastWord = phrase.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
     this.currentWord = lastWord;
     this.isLoading = true;
@@ -80,18 +80,18 @@ export class PoemCoupletComponent implements OnInit {
       })
   }
 
-  updateRhymeHints(hints: string[]) : void {
+  updateRhymeHints(hints: string[]): void {
     this.rhymeHints = hints;
     this.searchFailed = false;
     this.isLoading = false;
   }
 
-  onRhymeHintsFail(error) : void {
+  onRhymeHintsFail(error): void {
     this.searchFailed = true;
     this.isLoading = false;
   }
 
-  inputUpdate1($event) : void {
+  inputUpdate1($event): void {
     let words = $event.target.value.trim();
     let newSearch = words.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
     this.searchText = newSearch;
@@ -107,7 +107,7 @@ export class PoemCoupletComponent implements OnInit {
 
   }
 
-  focusNextInput($event) : void {
+  focusNextInput($event): void {
     //If the next input element is the next input element sibling (i.e. going from line one to line two), focus on that element. Otherwise, let the couplet focus service handle switching focus to the next couplet in the poem.
     let nextElement = $event.target.nextElementSibling;
     if (nextElement && 'type' in nextElement && nextElement.type === "text") {
@@ -117,22 +117,22 @@ export class PoemCoupletComponent implements OnInit {
     }
   }
 
-  onCoupletBlur() : void {
+  onCoupletBlur(): void {
     this.focus = false;
   }
 
-  onFocus($event) : void {
+  onFocus($event): void {
     this.focus = true;
     this.poemCoupletFocusService.coupletFocussed(this);
   }
 
-  onLine2Keyup($event) : void {
+  onLine2Keyup($event): void {
     if (this.checkForEnterPress($event)) {
       this.focusNextInput($event)
     }
   }
 
-  checkForEnterPress($event) : boolean {
+  checkForEnterPress($event): boolean {
     return ($event.keyCode === 13)
   }
 
