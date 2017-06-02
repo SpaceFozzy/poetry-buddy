@@ -8,9 +8,9 @@ import { PoemCoupletFocusService } from './poem-couplet/poem-couplet-focus.servi
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  showText = false;
-  searchFailed = false;
-  currentWord = null;
+  showText: boolean = false;
+  searchFailed: boolean = false;
+  currentWord: boolean = null;
   stanzas = [
     {
       type: "couplet",
@@ -18,34 +18,36 @@ export class AppComponent {
       line2: ""
     }
   ]
-  
-  constructor(private _service: RhymeService, private poemCoupletFocusService: PoemCoupletFocusService,) {}
 
-    ngOnInit() {
-      this.poemCoupletFocusService.focusedCouplet$.subscribe((index) => {
-        if (index > this.stanzas.length -1) {
-          let newCouplet = this.insertCouplet();
-          this.poemCoupletFocusService.coupletFinished(index-1);
-        }
-      });
-    }
+  constructor(
+    private _service: RhymeService,
+    private poemCoupletFocusService: PoemCoupletFocusService
+  ) { }
 
-    insertCouplet() {
-      let newCouplet = {
-        type: "couplet",
-        line1: "",
-        line2: ""
+  ngOnInit() {
+    this.poemCoupletFocusService.focusedCouplet$.subscribe((index) => {
+      if (index > this.stanzas.length - 1) {
+        this.insertCouplet();
+        this.poemCoupletFocusService.coupletFinished(index - 1);
       }
-      this.stanzas.push(newCouplet)
-      return newCouplet;
-    }
+    });
+  }
 
-    toggleShowText() {
-      if (this.showText) {
-        this.showText = false;
-      } else {
-        this.showText = true;
-      }
+  insertCouplet(): void {
+    let newCouplet = {
+      type: "couplet",
+      line1: "",
+      line2: ""
     }
+    this.stanzas.push(newCouplet)
+  }
+
+  toggleShowText(): void {
+    if (this.showText) {
+      this.showText = false;
+    } else {
+      this.showText = true;
+    }
+  }
 
 }

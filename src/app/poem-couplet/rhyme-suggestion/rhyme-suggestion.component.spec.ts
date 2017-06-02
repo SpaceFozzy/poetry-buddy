@@ -10,12 +10,12 @@ describe('RhymeSuggestionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ ],
-      declarations: [ RhymeSuggestionComponent ],
+      imports: [],
+      declarations: [RhymeSuggestionComponent],
       providers: [],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

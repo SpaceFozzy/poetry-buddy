@@ -7,7 +7,7 @@ describe('PoemCoupletFocusService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [PoemCoupletFocusService],
-      imports: [ FormsModule ]
+      imports: [FormsModule]
     });
   });
 

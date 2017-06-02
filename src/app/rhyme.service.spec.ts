@@ -1,5 +1,5 @@
 import { TestBed, inject } from '@angular/core/testing';
-import {Http, URLSearchParams} from '@angular/http';
+import { Http, URLSearchParams } from '@angular/http';
 
 import { RhymeService } from './rhyme.service';
 
@@ -15,7 +15,7 @@ const rhymeServiceStub = {
 describe('RhymeService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [{provide: RhymeService, useValue: rhymeServiceStub },{provide: Http, useValue: httpStub }]
+      providers: [{ provide: RhymeService, useValue: rhymeServiceStub }, { provide: Http, useValue: httpStub }]
     });
   });
 

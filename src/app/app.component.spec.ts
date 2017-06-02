@@ -2,7 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed, async } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { RhymeService } from "app/rhyme.service";
 import { PoemCoupletFocusService } from './poem-couplet/poem-couplet-focus.service';
@@ -12,12 +12,12 @@ import { ComponentFixture } from "@angular/core/testing";
 
 /* Stub out the required services for testing */
 const rhymeServiceStub = {
-  search() {}
+  search() { }
 };
 
 const poemCoupletFocusServiceStub = {
-  focusedCouplet$: Observable.create(observer => {}),
-  focusedCoupletElement$: Observable.create(observer => {})
+  focusedCouplet$: Observable.create(observer => { }),
+  focusedCoupletElement$: Observable.create(observer => { })
 };
 
 describe('AppComponent', () => {
@@ -26,11 +26,11 @@ describe('AppComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule ],
+      imports: [FormsModule],
       declarations: [
         AppComponent
       ],
-      providers: [{provide: RhymeService, useValue: rhymeServiceStub }, {provide: PoemCoupletFocusService, useValue: poemCoupletFocusServiceStub }],
+      providers: [{ provide: RhymeService, useValue: rhymeServiceStub }, { provide: PoemCoupletFocusService, useValue: poemCoupletFocusServiceStub }],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   }));
@@ -54,23 +54,23 @@ describe('AppComponent', () => {
   }));
 
   it('should show a poem-couplet component for every stanza', () => {
-      component.stanzas = [
-        {
-          type: "couplet",
-          line1: "",
-          line2: ""
-        },
-        {
-          type: "couplet",
-          line1: "",
-          line2: ""
-        },
-        {
-          type: "couplet",
-          line1: "",
-          line2: ""
-        }
-      ]
+    component.stanzas = [
+      {
+        type: "couplet",
+        line1: "",
+        line2: ""
+      },
+      {
+        type: "couplet",
+        line1: "",
+        line2: ""
+      },
+      {
+        type: "couplet",
+        line1: "",
+        line2: ""
+      }
+    ]
     fixture.detectChanges();
 
     let coupletCount = fixture.debugElement.nativeElement.querySelectorAll('poem-couplet').length

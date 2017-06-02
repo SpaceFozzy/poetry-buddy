@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject'
 import { RhymeService } from "app/rhyme.service";
 import { Observable } from "rxjs/Observable";
@@ -19,21 +19,25 @@ export class PoemCoupletComponent implements OnInit {
   @Input() coupletIndex: number;
   @Input() showText: boolean;
 
+  //Observable sources
   private inputSubject: BehaviorSubject<string> = new BehaviorSubject("");
+  
+  //Observable streams
   public inputObservable$ = this.inputSubject.asObservable();
   
-  private rhymeHints = [];
-  private searchFailed = false;
-  private unchanged = true;
-  private isLoading = false;
+  private rhymeHints: string[] = [];
+  private searchFailed: boolean = false;
+  private unchanged: boolean = true;
+  private isLoading: boolean = false;
 
-  public focus = false;
+  public focus:boolean = false;
   public currentWord: string = "";
   public searchText: string = null;
 
   constructor(
     private _service: RhymeService, 
-    private poemCoupletFocusService: PoemCoupletFocusService
+    private poemCoupletFocusService: PoemCoupletFocusService,
+    public elementRef: ElementRef //Used as a hook by the poem-couplet-focus service
   ) { }
 
   ngOnInit() {
@@ -54,16 +58,16 @@ export class PoemCoupletComponent implements OnInit {
 
   }
 
-  setFocusToThisCouplet() {
-    //If the user presses enter on the last line of the previous couplet, a new couplet will be created. If this couplet is brand new and hasn't had time to render, set a small delay to give it time to render before setting focus to the input.
+  setFocusToThisCouplet() : void {
     if (this.coupletInput1) {
       this.coupletInput1.nativeElement.focus()
     } else {
+      //If the user presses enter on the last line of the previous couplet, a new couplet will be created. If this couplet is brand new and hasn't had time to render, set a small delay to give it time to render before setting focus to the input.
       setTimeout(() => { this.coupletInput1.nativeElement.focus() }, 10);
     }
   }
 
-  getRhymesForLastWordInPhrase(phrase: string) {
+  getRhymesForLastWordInPhrase(phrase: string) : void {
     let lastWord = phrase.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
     this.currentWord = lastWord;
     this.isLoading = true;
@@ -76,18 +80,18 @@ export class PoemCoupletComponent implements OnInit {
       })
   }
 
-  updateRhymeHints(hints: string[]) {
+  updateRhymeHints(hints: string[]) : void {
     this.rhymeHints = hints;
     this.searchFailed = false;
     this.isLoading = false;
   }
 
-  onRhymeHintsFail(error) {
+  onRhymeHintsFail(error) : void {
     this.searchFailed = true;
     this.isLoading = false;
   }
 
-  inputUpdate1($event) {
+  inputUpdate1($event) : void {
     let words = $event.target.value.trim();
     let newSearch = words.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
     this.searchText = newSearch;
@@ -103,7 +107,7 @@ export class PoemCoupletComponent implements OnInit {
 
   }
 
-  focusNextInput($event) {
+  focusNextInput($event) : void {
     //If the next input element is the next input element sibling (i.e. going from line one to line two), focus on that element. Otherwise, let the couplet focus service handle switching focus to the next couplet in the poem.
     let nextElement = $event.target.nextElementSibling;
     if (nextElement && 'type' in nextElement && nextElement.type === "text") {
@@ -113,22 +117,22 @@ export class PoemCoupletComponent implements OnInit {
     }
   }
 
-  onCoupletBlur() {
+  onCoupletBlur() : void {
     this.focus = false;
   }
 
-  onFocus($event) {
+  onFocus($event) : void {
     this.focus = true;
     this.poemCoupletFocusService.coupletFocussed(this);
   }
 
-  onLine2Keyup($event) {
+  onLine2Keyup($event) : void {
     if (this.checkForEnterPress($event)) {
       this.focusNextInput($event)
     }
   }
 
-  checkForEnterPress($event) {
+  checkForEnterPress($event) : boolean {
     return ($event.keyCode === 13)
   }
 
