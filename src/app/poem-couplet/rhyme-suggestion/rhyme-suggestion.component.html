@@ -3,8 +3,6 @@
   <div id="spinner-container" *ngIf="isLoading">
     <i class="fa fa-spin fa-cog fa-5x"></i>
   </div>
-
-  <p id="before-suggestions" *ngIf="!searchText"><em>Rhyme suggestions will appear here.</em></p>
   
   <p id="loading-rhymes" *ngIf="searchText && isLoading"> Loading rhymes for "{{searchText}}"</p>
   

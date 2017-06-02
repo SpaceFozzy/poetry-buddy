@@ -28,14 +28,6 @@ describe('RhymeSuggestionComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should give the user feedback before rhymes are loaded', () => {
-    component.searchText = "";
-    fixture.detectChanges();
-
-    let element = fixture.debugElement.query(By.css('#before-suggestions'))
-    expect(element).toBeTruthy();
-  });
-
   it('should show the rhyme list when not loading and hide it when it is loading', () => {
     component.isLoading = false;
     fixture.detectChanges();
