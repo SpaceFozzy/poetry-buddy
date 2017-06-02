@@ -1,6 +1,6 @@
 <div class="couplet-stripe" [ngClass]="{'active-couplet-stripe': focus}">
     
-    <input #coupletInput1 *ngIf="showText===false" [(ngModel)]="stanza.line1" type="text" maxlength="120" class="form-control input" contenteditable="true" (keyup)="inputUpdate1($event)" (blur)="onBlur()" (focus)="onFocus1($event)" autofocus>
+    <input #coupletInput1 *ngIf="showText===false" [(ngModel)]="stanza.line1" type="text" maxlength="120" class="form-control input" contenteditable="true" (keyup)="inputUpdate1($event)" (blur)="onBlur()" (focus)="onFocus1($event)" autofocus placeholder="Type your first line...">
 
     <input #coupletInput2 *ngIf="showText===false" [(ngModel)]="stanza.line2" type="text" maxlength="120" class="form-control input" contenteditable="true" (blur)="onBlur()" (focus)="onFocus2($event)" (keyup)="onLine2Keyup($event)">
 
