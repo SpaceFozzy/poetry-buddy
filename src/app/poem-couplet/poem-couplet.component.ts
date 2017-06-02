@@ -19,17 +19,14 @@ export class PoemCoupletComponent implements OnInit {
   @Input() coupletIndex: number;
   @Input() showText: boolean;
 
-  @Output() hintsUpdated = new EventEmitter<string[]>();
-
   private inputSubject: BehaviorSubject<string> = new BehaviorSubject("");
-  private mockWords = [];
+  public inputObservable$ = this.inputSubject.asObservable();
+  
   private rhymeHints = [];
   private searchFailed = false;
   private unchanged = true;
   private isLoading = false;
-
   public focus = false;
-  public inputObservable$ = this.inputSubject.asObservable();
   public currentWord: string = "";
   public searchText: string = null;
 
@@ -73,15 +70,11 @@ export class PoemCoupletComponent implements OnInit {
 
   updateRhymeHints(hints: string[]) {
     this.rhymeHints = hints;
-    this.hintsUpdated.emit(hints);
-
     this.searchFailed = false;
     this.isLoading = false;
   }
 
   onRhymeHintsFail(error) {
-    this.rhymeHints = this.mockWords;
-    this.hintsUpdated.emit(this.mockWords);
 
     this.searchFailed = true;
     this.isLoading = false;
@@ -90,13 +83,15 @@ export class PoemCoupletComponent implements OnInit {
   inputUpdate1($event) {
     let words = $event.target.value.trim();
 
-    this.searchText = words.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+    let newSearch = words.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
 
-    this.isLoading = true;
+    this.searchText = newSearch;
+
     this.unchanged = false;
     if (this.checkForEnterPress($event)) {
       this.focusNextInput($event)
     } else {
+      this.isLoading = true;
       this.inputSubject.next(words);
     }
 
@@ -111,17 +106,11 @@ export class PoemCoupletComponent implements OnInit {
     }
   }
 
-  onBlur() {
+  onCoupletBlur() {
     this.focus = false;
   }
 
-  onFocus1($event) {
-    this.inputSubject.next($event.target.value.trim());
-    this.focus = true;
-    this.poemCoupletFocusService.coupletFocussed(this);
-  }
-
-  onFocus2() {
+  onFocus($event) {
     this.focus = true;
     this.poemCoupletFocusService.coupletFocussed(this);
   }

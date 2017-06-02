@@ -11,7 +11,6 @@ export class AppComponent {
   showText = false;
   searchFailed = false;
   currentWord = null;
-  rhymeHints = [];
   stanzas = [
     {
       type: "couplet",
@@ -39,10 +38,6 @@ export class AppComponent {
       }
       this.stanzas.push(newCouplet)
       return newCouplet;
-    }
-
-    onHintsUpdated(hints: string[]){
-      this.rhymeHints = hints;
     }
 
     toggleShowText() {

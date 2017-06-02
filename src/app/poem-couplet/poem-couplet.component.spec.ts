@@ -77,13 +77,5 @@ describe('PoemCoupletComponent', () => {
     let rhymeSuggestionCount = fixture.debugElement.nativeElement.querySelectorAll('rhyme-suggestion').length
     expect(rhymeSuggestionCount).toBe(0);
   });
-  
-  it('the rhyme-suggestion element does exist when focus is true', () => {
-    component.focus = true;
-    fixture.detectChanges();
-
-    let rhymeSuggestionCount = fixture.debugElement.nativeElement.querySelectorAll('rhyme-suggestion').length
-    expect(rhymeSuggestionCount).toBe(1);
-  });
 
 });

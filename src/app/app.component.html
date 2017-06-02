@@ -4,7 +4,7 @@
   <h2>Rhyme suggestions will appear as you type.</h2>
   <div class="form-control-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
 
-  <poem-couplet *ngFor="let stanza of stanzas; let i = index" [stanza]="stanza" [showText]="showText" [coupletIndex]="i" (hintsUpdated)="onHintsUpdated($event)"></poem-couplet>
+  <poem-couplet *ngFor="let stanza of stanzas; let i = index" [stanza]="stanza" [showText]="showText" [coupletIndex]="i" ></poem-couplet>
 </section>
 
 <section id="button-container">
