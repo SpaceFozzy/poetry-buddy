@@ -4,7 +4,7 @@
 
     <input #coupletInput2 *ngIf="showText===false" [(ngModel)]="stanza.line2" type="text" maxlength="120" class="form-control input" contenteditable="true" (blur)="onBlur()" (focus)="onFocus2($event)" (keyup)="onLine2Keyup($event)">
 
-    <rhyme-suggestion *ngIf="focus" [currentWord]="currentWord" [searchText]="searchText" [isLoading]="isLoading" [rhymeHints]="rhymeHints"></rhyme-suggestion>
+    <rhyme-suggestion *ngIf="focus && !unchanged" [currentWord]="currentWord" [searchText]="searchText" [isLoading]="isLoading" [rhymeHints]="rhymeHints"></rhyme-suggestion>
 
     <div id="printed-poem-container">
         <p class="printed" *ngIf="showText">{{stanza.line1}}</p>
