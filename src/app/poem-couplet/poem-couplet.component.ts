@@ -46,6 +46,12 @@ export class PoemCoupletComponent implements OnInit {
     this.poemCoupletFocusService.focusedCouplet$.subscribe((index) => {
       if (index === this.coupletIndex) {
         this.setFocusToThisCouplet();
+      } 
+    });
+
+    this.poemCoupletFocusService.focusedCoupletElement$.subscribe((element: ElementRef) => {
+      if (element !== this.elementRef) {
+       this.focus = false; 
       }
     });
 
@@ -115,10 +121,6 @@ export class PoemCoupletComponent implements OnInit {
     } else {
       this.poemCoupletFocusService.coupletFinished(this.coupletIndex);
     }
-  }
-
-  onCoupletBlur(): void {
-    this.focus = false;
   }
 
   onFocus($event): void {

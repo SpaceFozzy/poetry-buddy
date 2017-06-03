@@ -1,10 +1,10 @@
 <div class="couplet-stripe" [ngClass]="{'active-couplet-stripe': focus}">
 
     <input #coupletInput1 *ngIf="showText===false" [(ngModel)]="stanza.line1" type="text" maxlength="120" class="form-control input"
-        contenteditable="true" (keyup)="inputUpdate1($event)" (blur)="onCoupletBlur()" (focus)="onFocus($event)" autofocus placeholder="Type your first line...">
+        contenteditable="true" (keyup)="inputUpdate1($event)" (focus)="onFocus($event)" autofocus placeholder="Type your first line...">
 
     <input #coupletInput2 *ngIf="showText===false" [(ngModel)]="stanza.line2" type="text" maxlength="120" class="form-control input"
-        contenteditable="true" (blur)="onCoupletBlur()" (focus)="onFocus($event)" (keyup)="onLine2Keyup($event)">
+        contenteditable="true" (focus)="onFocus($event)" (keyup)="onLine2Keyup($event)">
 
     <rhyme-suggestion *ngIf="focus && !unchanged" [currentWord]="currentWord" [searchText]="searchText" [isLoading]="isLoading"
         [rhymeHints]="rhymeHints"></rhyme-suggestion>
