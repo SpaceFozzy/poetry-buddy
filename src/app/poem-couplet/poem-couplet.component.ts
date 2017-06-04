@@ -97,8 +97,15 @@ export class PoemCoupletComponent implements OnInit {
     this.isLoading = false;
   }
 
-  inputUpdate1($event): void {
+  inputUpdate1($event): boolean {
     let words = $event.target.value.trim();
+
+    if (!words) { 
+      this.rhymeHints = [];
+      this.searchText = "";
+      return false;
+    }
+    
     let newSearch = words.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
     this.searchText = newSearch;
     this.unchanged = false;
