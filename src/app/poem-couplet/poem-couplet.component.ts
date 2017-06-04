@@ -46,12 +46,12 @@ export class PoemCoupletComponent implements OnInit {
     this.poemCoupletFocusService.focusedCouplet$.subscribe((index) => {
       if (index === this.coupletIndex) {
         this.setFocusToThisCouplet();
-      } 
+      }
     });
 
     this.poemCoupletFocusService.focusedCoupletElement$.subscribe((element: ElementRef) => {
       if (element !== this.elementRef) {
-       this.focus = false; 
+        this.focus = false;
       }
     });
 
@@ -100,21 +100,26 @@ export class PoemCoupletComponent implements OnInit {
   inputUpdate1($event): boolean {
     let words = $event.target.value.trim();
 
-    if (!words) { 
+    if (!words) {
       this.rhymeHints = [];
       this.searchText = "";
       return false;
     }
     
-    let newSearch = words.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
-    this.searchText = newSearch;
-    this.unchanged = false;
 
     //If the key pressed is enter, switch focus to the next couplet rather than emitting a new input change. 
     if (this.checkForEnterPress($event)) {
       this.focusNextInput($event)
     } else {
+      let newSearch = words.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+
+      if (newSearch === this.searchText ) {
+        return false;
+      }
+
       this.isLoading = true;
+      this.unchanged = false;
+      this.searchText = newSearch;
       this.inputSubject.next(words);
     }
 
