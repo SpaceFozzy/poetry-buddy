@@ -1,15 +1,22 @@
+
+
 h1,h2 {
     padding:40px 10px 0 10px;
     margin-bottom:20px;
     font-size:5em;
     text-align:center;
     font-family: 'Love Ya Like A Sister', cursive;
+    font-weight:normal;
 }
 
 #caption {
-     font-family: 'Love Ya Like A Sister', cursive;
-     margin-bottom:20px;
+    font-family: 'Love Ya Like A Sister', cursive;
+    margin-bottom:20px;
+    max-width:90%;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 
 button {
     margin:10px;
@@ -41,7 +48,8 @@ button:hover{
 @media (max-width: 600px) {
 
     h1 {
-        font-size:2em;
+        padding-top:0;
+        font-size:2.5em;
     }
 
     h2 {
