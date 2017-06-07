@@ -1,3 +1,5 @@
   <button class="btn btn-default" type="button" ngxClipboard [cbContent]="poemText" (focus)="prepareText()" (cbOnSuccess)="cbOnSuccess($event)" (cbOnError)="cbOnError($event)">
     <i class="fa fa-clone"></i>  Copy To Clipboard
   </button>
+  <swal #successAlert title="Paste Away!" text="Your poem has been copied to your clipboard." type="success"></swal>
+  <swal #failureAlert title="No Can Do!" text="Try a better browser. Until then, view your poem as text and copy from there." type="error"></swal>

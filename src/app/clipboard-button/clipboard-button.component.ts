@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, ViewChild } from '@angular/core';
+import { SwalComponent } from "@toverux/ngsweetalert2/dist/types+es2015-modules";
 
 @Component({
   selector: 'clipboard-button',
@@ -6,6 +7,8 @@ import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
   styleUrls: ['./clipboard-button.component.css']
 })
 export class ClipboardButtonComponent implements OnInit {
+  @ViewChild('successAlert') private successAlert: SwalComponent;
+  @ViewChild('failureAlert') private failureAlert: SwalComponent;
   @Input() stanzas: any[];
   poemText: string = "";
   constructor() { }
@@ -24,10 +27,10 @@ export class ClipboardButtonComponent implements OnInit {
   }
 
   cbOnSuccess() {
-    console.log("success!");
+    this.successAlert.show()
   }
 
   cbOnError() {
-    console.log("clipboard error!");
+    this.failureAlert.show()
   }
 }

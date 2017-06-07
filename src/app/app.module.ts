@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 
+import { SweetAlert2Module } from '@toverux/ngsweetalert2';
+
 import { AppComponent } from './app.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -28,7 +30,10 @@ import { ClipboardButtonComponent } from './clipboard-button/clipboard-button.co
     HttpModule,
     NgbModule.forRoot(),
     JsonpModule,
-    ClipboardModule
+    ClipboardModule,
+    SweetAlert2Module.forRoot({
+        buttonsStyling: false
+    })
   ],
   providers: [RhymeService, PoemCoupletFocusService],
   bootstrap: [AppComponent]
