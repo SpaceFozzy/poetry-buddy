@@ -12,4 +12,22 @@ export class ClipboardButtonComponent implements OnInit {
   ngOnInit() {
     
   }
+
+  getClipboardText() {
+    let poemText = "";
+    this.stanzas.forEach((stanza)=>{
+      poemText += stanza.line1;
+      poemText += stanza.line2;
+    });
+
+    return poemText;
+  }
+
+  cbOnSuccess() {
+    console.log("clipboard success!");
+  }
+
+  cbOnError() {
+    console.log("clipboard error!");
+  }
 }

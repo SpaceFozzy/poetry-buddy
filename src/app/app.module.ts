@@ -6,6 +6,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ClipboardModule } from 'ngx-clipboard';
 
 import { RhymeService } from "app/rhyme.service";
 import { PoemCoupletComponent } from './poem-couplet/poem-couplet.component';
@@ -26,7 +27,8 @@ import { ClipboardButtonComponent } from './clipboard-button/clipboard-button.co
     FormsModule,
     HttpModule,
     NgbModule.forRoot(),
-    JsonpModule
+    JsonpModule,
+    ClipboardModule
   ],
   providers: [RhymeService, PoemCoupletFocusService],
   bootstrap: [AppComponent]
