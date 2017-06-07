@@ -7,14 +7,19 @@
 </section>
 
 <section id="button-container">
+  
   <button *ngIf="!showText" (click)="insertCouplet()">
     <i class="fa fa-plus"></i> Add A Couplet
   </button>
+
+  <clipboard-button [stanzas]="stanzas"></clipboard-button>
+  
   <button *ngIf="!showText" (click)="toggleShowText()">
     <i class="fa fa-file-text"></i> View As Text
   </button>
+  
   <button *ngIf="showText" (click)="toggleShowText()">
     <i class="fa fa-edit"></i>  Edit
   </button>
-  <clipboard-button [stanzas]="stanzas"></clipboard-button>
+  
 </section>
