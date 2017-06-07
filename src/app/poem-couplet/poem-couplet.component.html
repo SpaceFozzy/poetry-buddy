@@ -1,4 +1,4 @@
-<div class="couplet-stripe" [ngClass]="{'active-couplet-stripe': focus}">
+<div class="couplet-stripe" [ngClass]="{'active-couplet-stripe': focus && showText===false}">
 
     <input #coupletInput1 *ngIf="showText===false" [(ngModel)]="stanza.line1" type="text" maxlength="120" class="form-control input"
         contenteditable="true" (keyup)="inputUpdate1($event)" (focus)="onFocus($event)" autofocus placeholder="Type your first line...">
@@ -6,8 +6,7 @@
     <input #coupletInput2 *ngIf="showText===false" [(ngModel)]="stanza.line2" type="text" maxlength="120" class="form-control input"
         contenteditable="true" (focus)="onFocus($event)" (keyup)="onLine2Keyup($event)">
 
-    <rhyme-suggestion *ngIf="focus && searchText" [currentWord]="currentWord" [searchText]="searchText" [isLoading]="isLoading"
-        [rhymeHints]="rhymeHints"></rhyme-suggestion>
+        <rhyme-suggestion *ngIf="focus && searchText && showText===false" [currentWord]="currentWord" [searchText]="searchText" [isLoading]="isLoading" [rhymeHints]="rhymeHints"></rhyme-suggestion>
 
     <div id="printed-poem-container">
         <p class="printed" *ngIf="showText">{{stanza.line1}}</p>
