@@ -1,11 +1,12 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { RhymeService } from "app/rhyme.service";
 import { PoemCoupletFocusService } from './poem-couplet/poem-couplet-focus.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
   showText: boolean = false;

@@ -12,12 +12,14 @@ import { PoemCoupletComponent } from './poem-couplet/poem-couplet.component';
 import { PoemCoupletFocusService } from './poem-couplet/poem-couplet-focus.service';
 
 import { RhymeSuggestionComponent } from './poem-couplet/rhyme-suggestion/rhyme-suggestion.component';
+import { ClipboardButtonComponent } from './clipboard-button/clipboard-button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PoemCoupletComponent,
-    RhymeSuggestionComponent
+    RhymeSuggestionComponent,
+    ClipboardButtonComponent
   ],
   imports: [
     BrowserModule,
