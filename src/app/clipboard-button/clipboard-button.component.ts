@@ -6,25 +6,25 @@ import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
   styleUrls: ['./clipboard-button.component.css']
 })
 export class ClipboardButtonComponent implements OnInit {
-  @Input() stanzas: any;
+  @Input() stanzas: any[];
+  poemText: string = "";
   constructor() { }
 
   ngOnInit() {
     
   }
 
-  getClipboardText() {
-    let poemText = "";
+  prepareText() {
+    let poemText = ""
     this.stanzas.forEach((stanza)=>{
-      poemText += stanza.line1;
-      poemText += stanza.line2;
-    });
-
-    return poemText;
+      poemText += stanza.line1 + "\n";
+      poemText += stanza.line2 + "\n";
+    })
+    this.poemText = poemText;
   }
 
   cbOnSuccess() {
-    console.log("clipboard success!");
+    console.log("success!");
   }
 
   cbOnError() {

@@ -12,7 +12,7 @@ export class AppComponent {
   showText: boolean = false;
   searchFailed: boolean = false;
   currentWord: boolean = null;
-  stanzas = [
+  stanzas: any[] = [
     {
       type: "couplet",
       line1: "",
