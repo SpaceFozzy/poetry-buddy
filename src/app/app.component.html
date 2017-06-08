@@ -3,7 +3,7 @@
   <p id="caption">Rhyme suggestions will appear as you type.</p>
   <div class="form-control-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
 
-  <poem-couplet *ngFor="let stanza of stanzas; let i = index" [stanza]="stanza" [showText]="showText" [coupletIndex]="i"></poem-couplet>
+  <poem-couplet *ngFor="let stanza of poem; let i = index" [stanza]="stanza" [showText]="showText" [coupletIndex]="i"></poem-couplet>
 </section>
 
 <section id="button-container">
@@ -12,7 +12,7 @@
     <i class="fa fa-plus"></i> Add A Couplet
   </button>
 
-  <clipboard-button [stanzas]="stanzas"></clipboard-button>
+  <clipboard-button [poem]="poem"></clipboard-button>
   
   <button *ngIf="!showText" (click)="toggleShowText()">
     <i class="fa fa-file-text"></i> View As Text

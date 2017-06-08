@@ -6,11 +6,15 @@ import { SwalComponent } from "@toverux/ngsweetalert2/dist/types+es2015-modules"
   templateUrl: './clipboard-button.component.html',
   styleUrls: ['./clipboard-button.component.css']
 })
+
 export class ClipboardButtonComponent implements OnInit {
   @ViewChild('successAlert') private successAlert: SwalComponent;
   @ViewChild('failureAlert') private failureAlert: SwalComponent;
-  @Input() stanzas: any[];
+
+  @Input() poem: any[];
+  
   poemText: string = "";
+
   constructor() { }
 
   ngOnInit() {
@@ -19,7 +23,7 @@ export class ClipboardButtonComponent implements OnInit {
 
   prepareText() {
     let poemText = ""
-    this.stanzas.forEach((stanza)=>{
+    this.poem.forEach((stanza)=>{
       poemText += stanza.line1 + "\n";
       poemText += stanza.line2 + "\n";
     })

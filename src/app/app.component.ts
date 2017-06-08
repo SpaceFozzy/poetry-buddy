@@ -12,7 +12,7 @@ export class AppComponent {
   showText: boolean = false;
   searchFailed: boolean = false;
   currentWord: boolean = null;
-  stanzas: any[] = [
+  poem: any[] = [
     {
       type: "couplet",
       line1: "",
@@ -27,7 +27,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.poemCoupletFocusService.focusedCouplet$.subscribe((index) => {
-      if (index > this.stanzas.length - 1) {
+      if (index > this.poem.length - 1) {
         this.insertCouplet();
         this.poemCoupletFocusService.coupletFinished(index - 1);
       }
@@ -40,7 +40,7 @@ export class AppComponent {
       line1: "",
       line2: ""
     }
-    this.stanzas.push(newCouplet)
+    this.poem.push(newCouplet)
   }
 
   toggleShowText(): void {
