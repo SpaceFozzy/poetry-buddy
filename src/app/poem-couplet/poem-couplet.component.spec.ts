@@ -17,6 +17,7 @@ const rhymeServiceStub = {
 
 const poemCoupletFocusServiceStub = {
   focusedCouplet$: Observable.create(observer => { }),
+  focusedCoupletElement$: Observable.create(observer => { })
 };
 
 describe('PoemCoupletComponent', () => {
