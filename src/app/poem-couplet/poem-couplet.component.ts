@@ -105,7 +105,6 @@ export class PoemCoupletComponent implements OnInit {
       this.searchText = "";
       return false;
     }
-    
 
     //If the key pressed is enter, switch focus to the next couplet rather than emitting a new input change. 
     if (this.checkForEnterPress($event)) {

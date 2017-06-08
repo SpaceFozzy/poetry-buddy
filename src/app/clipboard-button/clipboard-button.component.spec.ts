@@ -14,14 +14,14 @@ describe('ClipboardButtonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ClipboardButtonComponent ],
+      declarations: [ClipboardButtonComponent],
       imports: [ClipboardModule,
-      SweetAlert2Module.forRoot({
+        SweetAlert2Module.forRoot({
           buttonsStyling: false
-      })],
+        })],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -33,4 +33,11 @@ describe('ClipboardButtonComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should convert a poem to text object for clipboard properly', () => {
+    component.poem = [{ line1: "line1", line2: 'line2' },{ line1: "line3", line2: 'line4' }]
+    let convertedPoem = component.convertPoemToText(component.poem);
+    expect(convertedPoem).toBe("line1\nline2\nline3\nline4\n");
+  });
+
 });

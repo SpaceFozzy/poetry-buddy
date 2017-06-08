@@ -22,12 +22,16 @@ export class ClipboardButtonComponent implements OnInit {
   }
 
   prepareText() {
+    this.poemText = this.convertPoemToText(this.poem);
+  }
+
+  convertPoemToText (poem) : string {
     let poemText = ""
-    this.poem.forEach((stanza)=>{
-      poemText += stanza.line1 + "\n";
-      poemText += stanza.line2 + "\n";
+    this.poem.forEach((couplet)=>{
+      poemText += couplet.line1 + "\n";
+      poemText += couplet.line2 + "\n";
     })
-    this.poemText = poemText;
+    return poemText;
   }
 
   cbOnSuccess() {
