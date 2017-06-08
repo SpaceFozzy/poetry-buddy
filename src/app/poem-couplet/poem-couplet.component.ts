@@ -73,8 +73,12 @@ export class PoemCoupletComponent implements OnInit {
     }
   }
 
+  getLastWordInPhrase(phrase: string) : string {
+    return phrase.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+  }
+
   getRhymesForLastWordInPhrase(phrase: string): void {
-    let lastWord = phrase.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+    let lastWord = this.getLastWordInPhrase(phrase)
     this.currentWord = lastWord;
     this.isLoading = true;
 
@@ -110,7 +114,7 @@ export class PoemCoupletComponent implements OnInit {
     if (this.checkForEnterPress($event)) {
       this.focusNextInput($event)
     } else {
-      let newSearch = words.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+      let newSearch = this.getLastWordInPhrase(words);
 
       if (newSearch === this.searchText ) {
         return false;
