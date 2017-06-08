@@ -26,21 +26,21 @@ export class AppComponent {
   ) { }
 
   ngOnInit() {
-    this.poemCoupletFocusService.focusedCouplet$.subscribe((index) => {
-      if (index > this.poem.length - 1) {
-        this.insertCouplet();
-        this.poemCoupletFocusService.coupletFinished(index - 1);
+    this.poemCoupletFocusService.focusedCouplet$.subscribe((coupletToFocus) => {
+      if (coupletToFocus > this.poem.length - 1) {
+        this.poem.push(this.createNewCouplet());
+        this.poemCoupletFocusService.coupletFinished(coupletToFocus - 1);
       }
     });
   }
 
-  insertCouplet(): void {
+  createNewCouplet(): any {
     let newCouplet = {
       type: "couplet",
       line1: "",
       line2: ""
     }
-    this.poem.push(newCouplet)
+    return newCouplet;
   }
 
   toggleShowText(): void {

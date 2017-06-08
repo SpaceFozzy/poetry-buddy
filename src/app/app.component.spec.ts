@@ -77,4 +77,11 @@ describe('AppComponent', () => {
     expect(coupletCount).toBe(3);
   });
 
+  it('should create a new empty stanza properly when asked', () => {
+    let stanza = component.createNewCouplet();
+    expect(stanza.line1).toBe("");
+    expect(stanza.line2).toBe("");
+    expect(stanza.type).toBe("couplet");
+  });
+
 });
