@@ -1,6 +1,6 @@
 <section id="writing-space">
   <h1>Poetry Buddy</h1>
-  <p id="caption">Rhyme suggestions will appear as you type.</p>
+  <p id="caption">Write a poem! Rhyme suggestions will appear as you type.</p>
   <div class="form-control-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
 
   <poem-couplet *ngFor="let stanza of poem; let i = index" [stanza]="stanza" [showText]="showText" [coupletIndex]="i"></poem-couplet>
@@ -8,15 +8,15 @@
 
 <section id="button-container">
   
-  <button *ngIf="!showText" (click)="insertCouplet()">
+  <!--<button *ngIf="!showText" (click)="insertCouplet()">
     <i class="fa fa-plus"></i> Add A Couplet
-  </button>
+  </button>-->
 
   <clipboard-button [poem]="poem"></clipboard-button>
   
-  <button *ngIf="!showText" (click)="toggleShowText()">
+  <!-- <button *ngIf="!showText" (click)="toggleShowText()">
     <i class="fa fa-file-text"></i> View As Text
-  </button>
+  </button>-->
   
   <button *ngIf="showText" (click)="toggleShowText()">
     <i class="fa fa-edit"></i>  Edit
