@@ -35,6 +35,10 @@ export class AppComponent {
     });
   }
 
+  insertCouplet() {
+    this.poem.push(this.createNewCouplet());
+  }  
+
   createNewCouplet(): Stanza {
     let newCouplet: Stanza = {
       type: "couplet",
