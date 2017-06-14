@@ -1,5 +1,23 @@
-  <button class="btn btn-default" type="button" ngxClipboard [cbContent]="poemText" (cbOnSuccess)="cbOnSuccess()" (cbOnError)="cbOnError()" (mousedown)="prepareText()" (keydown)="prepareText()">
+  <button class="btn btn-default" 
+    type="button" 
+    ngxClipboard 
+    [cbContent]="poemText" 
+    (cbOnSuccess)="cbOnSuccess()" 
+    (cbOnError)="cbOnError()" 
+    (mousedown)="prepareText()" 
+    (keydown)="prepareText()">
     <i class="fa fa-clone"></i>  Copy To Clipboard
   </button>
-  <swal #successAlert title="Paste Away!" text="Your poem has been copied to your clipboard." type="success"></swal>
-  <swal #failureAlert title="No Can Do!" text="Try a better browser. Until then, view your poem as text and copy from there." type="error"></swal>
+
+  <!--Sweet alerts using ngsweetalert2 by toverux: https://github.com/toverux/ngsweetalert2 -->
+  <swal #successAlert 
+    title="Paste Away!" 
+    text="Your poem has been copied to your clipboard." 
+    type="success">
+  </swal>
+
+  <swal #failureAlert 
+    title="No Can Do!" 
+    text="Try a better browser. Until then, view your poem as text and copy from there." 
+    type="error">
+  </swal>

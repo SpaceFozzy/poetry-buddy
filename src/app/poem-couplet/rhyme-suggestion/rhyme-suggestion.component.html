@@ -4,11 +4,20 @@
     <i class="fa fa-spin fa-cog fa-5x"></i>
   </div>
 
-  <p id="loading-rhymes" *ngIf="searchText && isLoading"> Loading rhymes for "{{searchText}}"</p>
+  <p id="loading-rhymes" *ngIf="searchText && isLoading">
+    Loading rhymes for "{{searchText}}"
+  </p>
 
-  <p id="no-rhymes-found" *ngIf="currentWord && !isLoading && rhymeHints.length === 0"><em>No rhymes found for "{{currentWord}}" </em></p>
-  <p id="rhymes-found" *ngIf="currentWord && !isLoading && rhymeHints.length > 0">Rhymes with "{{currentWord}}": </p>
+  <p id="no-rhymes-found" *ngIf="currentWord && !isLoading && rhymeHints.length === 0">
+      <em>No rhymes found for "{{currentWord}}"</em>
+  </p>
+
+  <p id="rhymes-found" *ngIf="currentWord && !isLoading && rhymeHints.length > 0">
+    Rhymes with "{{currentWord}}":
+  </p>
+
   <ul *ngIf="!isLoading" id="rhyme-list">
-    <li *ngFor="let hint of rhymeHints">{{hint}} </li>
+    <li *ngFor="let hint of rhymeHints">{{hint}}</li>
   </ul>
+
 </div>
