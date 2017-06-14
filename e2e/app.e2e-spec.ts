@@ -14,7 +14,7 @@ describe('poetic App', () => {
     expect(page.getHeaderText()).toEqual('Poetry Buddy');
   });
 
-  it('should show a list of rhyme options when a word is typed on the first line', () => {
+  it('should fetch and display a list of rhyme options when a word is typed on the first line', () => {
     page.navigateTo();
     let firstLineInput = element.all(by.css("input")).first();
     firstLineInput.sendKeys("The first line ends in dog");
