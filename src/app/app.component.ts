@@ -56,4 +56,8 @@ export class AppComponent {
     }
   }
 
+  onShowText(): void {
+    this.showText = true;
+  }
+
 }

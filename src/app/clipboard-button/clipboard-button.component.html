@@ -19,5 +19,8 @@
   <swal #failureAlert 
     title="No Can Do!" 
     text="Try a better browser. Until then, view your poem as text and copy from there." 
-    type="error">
+    type="error"
+    [options]="{ confirmButtonText: 'View As Text', showCancelButton: true, cancelButtonText: 'Forget It' }"
+    (confirm)="onShowText()">
+    
   </swal>

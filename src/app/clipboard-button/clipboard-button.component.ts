@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, ViewChild, Output, EventEmitter } from '@angular/core';
 import { SwalComponent } from "@toverux/ngsweetalert2/dist/types+es2015-modules";
 
 @Component({
@@ -12,6 +12,7 @@ export class ClipboardButtonComponent implements OnInit {
   @ViewChild('failureAlert') private failureAlert: SwalComponent;
 
   @Input() poem: any[];
+  @Output() showText: EventEmitter<any> = new EventEmitter();;
   
   poemText: string = "";
 
@@ -40,5 +41,9 @@ export class ClipboardButtonComponent implements OnInit {
 
   cbOnError() {
     this.failureAlert.show()
+  }
+
+  onShowText() {
+    this.showText.emit();
   }
 }
