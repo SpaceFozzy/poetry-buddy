@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ApplicationRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ApplicationRef, Output, EventEmitter } from '@angular/core';
 import { SwalComponent } from "@toverux/ngsweetalert2/dist/types+es2015-modules";
 
 @Component({
@@ -14,8 +14,9 @@ export class RhymeSuggestionComponent implements OnInit {
     @Input() searchText: string = null;
     @Input() isLoading: boolean;
     @Input() rhymeHints: string[];
+    @Output() onRhymeSelected: EventEmitter<string> = new EventEmitter<string>();
 
-    selectedWord: string = "";
+    selectedWord: string;
 
     constructor(private applicationRef: ApplicationRef) { }
 
@@ -24,7 +25,12 @@ export class RhymeSuggestionComponent implements OnInit {
     onHintSelected(hint: string) {
         this.selectedWord = hint;
         this.applicationRef.tick();
-        this.confirmAlert.show();
+        
+        this.confirmAlert.show().then(()=>{
+            this.onRhymeSelected.emit(hint);
+        }).catch(()=>{
+            /* confirmation dialogue canceled */
+        });
     }
     
 }
