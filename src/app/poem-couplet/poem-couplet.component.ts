@@ -15,6 +15,7 @@ import 'rxjs/add/operator/map';
 })
 export class PoemCoupletComponent implements OnInit {
   @ViewChild('coupletInput1') private coupletInput1;
+  @ViewChild('coupletInput2') private coupletInput2;
   @Input() stanza: object;
   @Input() coupletIndex: number;
   @Input() showText: boolean;
@@ -151,6 +152,11 @@ export class PoemCoupletComponent implements OnInit {
 
   checkForEnterPress($event): boolean {
     return ($event.keyCode === 13)
+  }
+
+  onRhymeSelected($event) {
+    console.log('couplet detects rhyme selection event',$event);
+    this.coupletInput2.nativeElement.value += $event;
   }
 
 }

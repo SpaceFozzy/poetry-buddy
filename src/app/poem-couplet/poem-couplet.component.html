@@ -26,7 +26,8 @@
             [currentWord]="currentWord" 
             [searchText]="searchText" 
             [isLoading]="isLoading" 
-            [rhymeHints]="rhymeHints">
+            [rhymeHints]="rhymeHints"
+            (onRhymeSelected)="onRhymeSelected($event)">
         </rhyme-suggestion>
 
     <div id="printed-poem-container">
