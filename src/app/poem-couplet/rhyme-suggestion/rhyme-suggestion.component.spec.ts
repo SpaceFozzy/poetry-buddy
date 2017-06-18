@@ -4,13 +4,17 @@ import { By } from '@angular/platform-browser';
 
 import { RhymeSuggestionComponent } from './rhyme-suggestion.component';
 
+import { SweetAlert2Module } from '@toverux/ngsweetalert2';
+
 describe('RhymeSuggestionComponent', () => {
   let component: RhymeSuggestionComponent;
   let fixture: ComponentFixture<RhymeSuggestionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [],
+      imports: [SweetAlert2Module.forRoot({
+          buttonsStyling: false
+        })],
       declarations: [RhymeSuggestionComponent],
       providers: [],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
