@@ -155,7 +155,6 @@ export class PoemCoupletComponent implements OnInit {
   }
 
   onRhymeSelected($event) {
-    console.log('couplet detects rhyme selection event',$event);
     this.coupletInput2.nativeElement.value += $event;
   }
 
