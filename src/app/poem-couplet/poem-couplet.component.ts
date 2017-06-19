@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject'
 import { RhymeService } from "app/rhyme.service";
 import { Observable } from "rxjs/Observable";
 import { PoemCoupletFocusService } from "./poem-couplet-focus.service";
+import { Stanza } from "../shared/stanza.model";
 
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/observable/of';
@@ -16,7 +17,7 @@ import 'rxjs/add/operator/map';
 export class PoemCoupletComponent implements OnInit {
   @ViewChild('coupletInput1') private coupletInput1;
   @ViewChild('coupletInput2') private coupletInput2;
-  @Input() stanza: object;
+  @Input() stanza: Stanza;
   @Input() coupletIndex: number;
   @Input() showText: boolean;
 
@@ -155,7 +156,7 @@ export class PoemCoupletComponent implements OnInit {
   }
 
   onRhymeSelected($event) {
-    this.coupletInput2.nativeElement.value += $event;
+    this.stanza.line2 += $event;
   }
 
 }
