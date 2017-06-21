@@ -1,34 +1,28 @@
 import { Injectable } from "@angular/core";
-import { Http, URLSearchParams } from '@angular/http';
+import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class RhymeService {
 
-  constructor(private http: Http) { }
+	constructor(private http: Http) { }
 
-  cachedData: any = {};
+	cachedRhymes: any = {};
+	cacheLimit: number = 2;
 
-  search(term: string): Observable<string[]> {
-    if (term === '') {
-      return Observable.of([]);
-    }
+	search(word: string): Observable<string[]> {
+		if (word in this.cachedRhymes) {
+			return Observable.of(this.cachedRhymes[word]);
+		}
 
-    if (term in this.cachedData) {
-      return Observable.of(this.cachedData[term]);
-    }
-    let rhymeUrl = `https://api.datamuse.com/words?rel_rhy=${term}`;
-    let params = new URLSearchParams();
+		let rhymeUrl = `https://api.datamuse.com/words?rel_rhy=${word}`;
 
-    return this.http
-      .get(rhymeUrl, { search: params })
-      .map(response => {
-        let words = response.json().map((rhyme) => {
-          return rhyme.word;
-        });
-        this.cachedData[term] = words;
-        debugger;
-        return <string[]>words;
-      });
-  }
+		return this.http.get(rhymeUrl).map(response => {			
+			let rhymes = response.json().map((rhyme) => {
+				return rhyme.word;
+			});
+			this.cachedRhymes[word] = rhymes;
+			return <string[]>rhymes;
+		});
+	}
 }
