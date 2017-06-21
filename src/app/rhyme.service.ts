@@ -4,17 +4,19 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class RhymeService {
-
+	private cachedRhymes: any = {};	
+	
 	constructor(private http: Http) { }
 
-	cachedRhymes: any = {};
-	cacheLimit: number = 2;
-
 	search(word: string): Observable<string[]> {
+		if (word === '') {
+			return Observable.of([]);
+		}
+
 		if (word in this.cachedRhymes) {
 			return Observable.of(this.cachedRhymes[word]);
 		}
-
+		
 		let rhymeUrl = `https://api.datamuse.com/words?rel_rhy=${word}`;
 
 		return this.http.get(rhymeUrl).map(response => {			
