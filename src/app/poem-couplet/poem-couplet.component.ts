@@ -62,7 +62,7 @@ export class PoemCoupletComponent implements OnInit {
 
     //Subscribe to the input observable to fetch rhymes as the input text changes.
     this.inputObservable$
-      .debounceTime(300)
+      .debounceTime(500)
       .subscribe((words) => {
         this.getRhymesForLastWordInPhrase(words);
       });
