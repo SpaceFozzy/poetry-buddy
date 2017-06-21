@@ -28,7 +28,10 @@ describe('PoemCoupletComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
       declarations: [PoemCoupletComponent],
-      providers: [{ provide: RhymeService, useValue: rhymeServiceStub }, { provide: PoemCoupletFocusService, useValue: poemCoupletFocusServiceStub }],
+      providers: [
+        { provide: RhymeService, useValue: rhymeServiceStub },
+        { provide: PoemCoupletFocusService, useValue: poemCoupletFocusServiceStub }
+      ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
       .compileComponents();

@@ -1,4 +1,10 @@
-import { Component, OnInit, Input, ViewChild, ApplicationRef, Output, EventEmitter } from '@angular/core';
+import { Component, 
+    OnInit, 
+    Input, 
+    ViewChild, 
+    ApplicationRef, 
+    Output, 
+    EventEmitter } from '@angular/core';
 import { SwalComponent } from "@toverux/ngsweetalert2/dist/types+es2015-modules";
 
 @Component({

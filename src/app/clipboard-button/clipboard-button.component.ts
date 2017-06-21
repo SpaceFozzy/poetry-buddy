@@ -12,7 +12,7 @@ export class ClipboardButtonComponent implements OnInit {
   @ViewChild('failureAlert') private failureAlert: SwalComponent;
 
   @Input() poem: any[];
-  @Output() showText: EventEmitter<any> = new EventEmitter();;
+  @Output() showText: EventEmitter<any> = new EventEmitter();
   
   poemText: string = "";
 
@@ -36,11 +36,11 @@ export class ClipboardButtonComponent implements OnInit {
   }
 
   cbOnSuccess() {
-    this.successAlert.show()
+    this.successAlert.show();
   }
 
   cbOnError() {
-    this.failureAlert.show()
+    this.failureAlert.show();
   }
 
   onShowText() {
