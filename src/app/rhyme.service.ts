@@ -7,9 +7,15 @@ export class RhymeService {
 
   constructor(private http: Http) { }
 
+  cachedData: any = {};
+
   search(term: string): Observable<string[]> {
     if (term === '') {
       return Observable.of([]);
+    }
+
+    if (term in this.cachedData) {
+      return Observable.of(this.cachedData[term]);
     }
     let rhymeUrl = `https://api.datamuse.com/words?rel_rhy=${term}`;
     let params = new URLSearchParams();
@@ -20,6 +26,8 @@ export class RhymeService {
         let words = response.json().map((rhyme) => {
           return rhyme.word;
         });
+        this.cachedData[term] = words;
+        debugger;
         return <string[]>words;
       });
   }
