@@ -1,5 +1,5 @@
 import { PoetryBuddyPage } from './app.po';
-import { element, by, browser } from "protractor";
+import { element, by, browser, protractor } from "protractor";
 
 
 describe('poetic App', () => {
@@ -33,6 +33,21 @@ describe('poetic App', () => {
     
     let listItemCollection = element.all(by.css("#rhyme-list li"));
     expect(listItemCollection.count()).toBeGreaterThan(3);
+  });
+
+  it('should move through lines when the user presses enter and create new couplets as needed', () => {
+    page.navigateTo();
+    let firstLineInput = element.all(by.css("input")).first();
+    let secondLineInput = element.all(by.css("input")).get(1);
+
+    firstLineInput.sendKeys("The first line ends in dog");
+    firstLineInput.sendKeys(protractor.Key.ENTER);
+    
+    secondLineInput.sendKeys("The second line ends in dog");
+    secondLineInput.sendKeys(protractor.Key.ENTER);
+    
+    let inputElements = element.all(by.css("input"));
+    expect(inputElements.count()).toBe(4);
   });
 
 
