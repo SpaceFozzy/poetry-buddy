@@ -1,5 +1,4 @@
 import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
-import { RhymeService } from "app/rhyme.service";
 import { PoemCoupletFocusService } from './poem-couplet/poem-couplet-focus.service';
 import { Stanza } from './shared/stanza.model'
 
@@ -23,7 +22,6 @@ export class AppComponent {
   ]
 
   constructor(
-    private _service: RhymeService,
     private poemCoupletFocusService: PoemCoupletFocusService
   ) { }
 
