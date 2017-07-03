@@ -1,17 +1,21 @@
 <section id="writing-space">
   
   <h1>Poetry Buddy</h1>
-  <p id="caption">Write a poem! Rhyme suggestions will appear as you type.</p>
+
+  <p id="caption">
+    Write a poem! Rhyme suggestions will appear as you type.
+  </p>
   
   <div class="form-control-feedback" *ngIf="searchFailed">
     Sorry, suggestions could not be loaded.
   </div>
 
   <poem-couplet *ngFor="let stanza of poem; let i = index" 
-    [stanza]="stanza" 
-    [showText]="showText" 
-    [coupletIndex]="i"></poem-couplet>
-  </section>
+      [stanza]="stanza" 
+      [showText]="showText" 
+      [coupletIndex]="i"></poem-couplet>
+
+</section>
 
 <section id="button-container">
   
@@ -19,7 +23,10 @@
     <i class="fa fa-plus"></i> Add More Lines
   </button>
 
-  <clipboard-button *ngIf="!showText" [poem]="poem" (showText)="onShowText()"></clipboard-button>
+  <clipboard-button *ngIf="!showText" 
+      [poem]="poem" 
+      (showText)="onShowText()">
+  </clipboard-button>
   
   <!-- <button *ngIf="!showText" (click)="toggleShowText()">
     <i class="fa fa-file-text"></i> View As Text

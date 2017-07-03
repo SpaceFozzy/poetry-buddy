@@ -1,25 +1,25 @@
 <div class="couplet-stripe" [ngClass]="{'active-couplet-stripe': focus && showText===false}">
 
     <input #coupletInput1 
-        *ngIf="showText===false" 
-        type="text" 
-        maxlength="120" 
-        class="form-control input"
-        autofocus 
-        placeholder="Enter your first line here..."
-        [(ngModel)]="stanza.line1" 
-        (keyup)="inputUpdate1($event)" 
-        (focus)="onFocus($event)" >
+            *ngIf="showText===false" 
+            type="text" 
+            maxlength="120" 
+            class="form-control input"
+            autofocus 
+            placeholder="Enter your first line here..."
+            [(ngModel)]="stanza.line1" 
+            (keyup)="inputUpdate1($event)" 
+            (focus)="onFocus($event)" >
 
     <input #coupletInput2 
-        *ngIf="showText===false"
-        type="text" 
-        maxlength="120" 
-        class="form-control input"
-        placeholder="Enter a rhyming line here..."
-        [(ngModel)]="stanza.line2" 
-        (focus)="onFocus($event)" 
-        (keyup)="onLine2Keyup($event)" >
+            *ngIf="showText===false"
+            type="text" 
+            maxlength="120" 
+            class="form-control input"
+            placeholder="Enter a rhyming line here..."
+            [(ngModel)]="stanza.line2" 
+            (focus)="onFocus($event)" 
+            (keyup)="onLine2Keyup($event)" >
 
         <rhyme-suggestion 
             *ngIf="focus && searchText && showText===false" 
