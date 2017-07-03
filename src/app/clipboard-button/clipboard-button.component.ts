@@ -13,22 +13,22 @@ export class ClipboardButtonComponent implements OnInit {
 
   @Input() poem: any[];
   @Output() showText: EventEmitter<any> = new EventEmitter();
-  
+
   poemText: string = "";
 
   constructor() { }
 
   ngOnInit() {
-    
+
   }
 
   prepareText() {
     this.poemText = this.convertPoemToText(this.poem);
   }
 
-  convertPoemToText (poem) : string {
+  convertPoemToText(poem): string {
     let poemText = ""
-    this.poem.forEach((couplet)=>{
+    this.poem.forEach((couplet) => {
       poemText += couplet.line1 + "\n";
       poemText += couplet.line2 + "\n";
     })

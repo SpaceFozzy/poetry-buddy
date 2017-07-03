@@ -41,11 +41,10 @@ export class PoemCoupletComponent implements OnInit {
     private poemCoupletFocusService: PoemCoupletFocusService,
     // elementRef is used as a hook by the poem-couplet-focusservice to
     // manually shift focus to this element
-    public elementRef: ElementRef 
+    public elementRef: ElementRef
   ) { }
 
   ngOnInit() {
-
     // Subscribe to the focus service to allow enter presses to change focus
     // between components
     this.poemCoupletFocusService.focusedCouplet$.subscribe((index) => {
@@ -80,7 +79,7 @@ export class PoemCoupletComponent implements OnInit {
     }
   }
 
-  getLastWordInPhrase(phrase: string) : string {
+  getLastWordInPhrase(phrase: string): string {
     return phrase.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
   }
 
@@ -124,7 +123,7 @@ export class PoemCoupletComponent implements OnInit {
     } else {
       let newSearch = this.getLastWordInPhrase(words);
 
-      if (newSearch === this.searchText ) {
+      if (newSearch === this.searchText) {
         return false;
       }
 

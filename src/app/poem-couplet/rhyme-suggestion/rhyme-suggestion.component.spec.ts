@@ -13,8 +13,8 @@ describe('RhymeSuggestionComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [SweetAlert2Module.forRoot({
-          buttonsStyling: false
-        })],
+        buttonsStyling: false
+      })],
       declarations: [RhymeSuggestionComponent],
       providers: [],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]

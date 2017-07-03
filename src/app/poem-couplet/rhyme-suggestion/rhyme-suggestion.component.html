@@ -1,9 +1,9 @@
 <!--Sweet alerts using ngsweetalert2 by toverux: https://github.com/toverux/ngsweetalert2 -->
   <swal #confirmAlert 
-    title="Add {{selectedWord}}?"
-    text='This will add "{{selectedWord}}" to your second line.'
-    [options]="{ confirmButtonText: 'Yes', showCancelButton: true, cancelButtonText: 'No' }"
-    type="question">
+      title="Add {{selectedWord}}?"
+      text='This will add "{{selectedWord}}" to your second line.'
+      [options]="{ confirmButtonText: 'Yes', showCancelButton: true, cancelButtonText: 'No' }"
+      type="question">
   </swal>
 
 <div id="rhyme-panel">
@@ -17,7 +17,7 @@
   </p>
 
   <p id="no-rhymes-found" *ngIf="currentWord && !isLoading && rhymeHints.length === 0">
-      <em>No rhymes found for "{{currentWord}}"</em>
+    <em>No rhymes found for "{{currentWord}}"</em>
   </p>
 
   <p id="rhymes-found" *ngIf="currentWord && !isLoading && rhymeHints.length > 0">

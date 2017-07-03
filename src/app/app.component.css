@@ -1,77 +1,75 @@
-
-
 h1,h2 {
-    padding:40px 10px 0 10px;
-    margin-bottom:20px;
-    font-size:5em;
-    text-align:center;
-    font-family: 'Love Ya Like A Sister', cursive;
-    font-weight:normal;
+  padding:40px 10px 0 10px;
+  margin-bottom:20px;
+  font-size:5em;
+  text-align:center;
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-weight:normal;
 }
 
 #caption {
-    font-family: 'Love Ya Like A Sister', cursive;
-    margin-bottom:20px;
-    max-width:90%;
-    margin-left: auto;
-    margin-right: auto;
+  font-family: 'Love Ya Like A Sister', cursive;
+  margin-bottom:20px;
+  max-width:90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
 button {
-    margin:10px;
-    padding:10px;
-    background-color:#719ECE;
-    border:none;
-    color:white;
-    font-size:1em;
-    cursor:pointer;
-    transition:200ms;
-    width:200px;
+  margin:10px;
+  padding:10px;
+  background-color:#719ECE;
+  border:none;
+  color:white;
+  font-size:1em;
+  cursor:pointer;
+  transition:200ms;
+  width:200px;
 }
 
 #writing-space {
-    text-align:center;
+  text-align:center;
 }
 
 button:hover{
-    background-color:#3A5D81;
+  background-color:#3A5D81;
 }
 
 #button-container {
-    margin-top:10px;
-    margin-left:15px;
-    margin-bottom:500px;
-    text-align:center;
+  margin-top:10px;
+  margin-left:15px;
+  margin-bottom:500px;
+  text-align:center;
 }
 
 @media (max-width: 600px) {
 
-    h1 {
-        padding-top:0;
-        font-size:2.5em;
-    }
+  h1 {
+    padding-top:0;
+    font-size:2.5em;
+  }
 
-    h2 {
-        font-size:1.1em;
-    }
+  h2 {
+    font-size:1.1em;
+  }
 
-    #writing-space {
-        padding-right: 0;
-    }
+  #writing-space {
+    padding-right: 0;
+  }
 
-    #button-container {
-        margin-top:10px;
-        margin-left:0;
-        margin-right:0;
-        padding-left:20px;
-        padding-right:20px;
-    }
+  #button-container {
+    margin-top:10px;
+    margin-left:0;
+    margin-right:0;
+    padding-left:20px;
+    padding-right:20px;
+  }
 
-    button {
-        margin-left:0;
-        margin-right:0;
-        width:100%;
-    }
+  button {
+    margin-left:0;
+    margin-right:0;
+    width:100%;
+  }
 
 }

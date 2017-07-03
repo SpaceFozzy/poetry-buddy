@@ -34,7 +34,7 @@ describe('ClipboardButtonComponent', () => {
   });
 
   it('should convert a poem to text object for clipboard properly', () => {
-    component.poem = [{ line1: "line1", line2: 'line2' },{ line1: "line3", line2: 'line4' }]
+    component.poem = [{ line1: "line1", line2: 'line2' }, { line1: "line3", line2: 'line4' }]
     let convertedPoem = component.convertPoemToText(component.poem);
     expect(convertedPoem).toBe("line1\nline2\nline3\nline4\n");
   });

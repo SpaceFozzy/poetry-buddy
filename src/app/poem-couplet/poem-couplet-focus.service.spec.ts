@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { PoemCoupletFocusService } from './poem-couplet-focus.service';
 import { FormsModule } from "@angular/forms";
+import { PoemCoupletFocusService } from './poem-couplet-focus.service';
 
 describe('PoemCoupletFocusService', () => {
   beforeEach(() => {

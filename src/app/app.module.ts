@@ -5,17 +5,16 @@ import { HttpModule, JsonpModule } from '@angular/http';
 
 import { SweetAlert2Module } from '@toverux/ngsweetalert2';
 
-import { AppComponent } from './app.component';
-
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ClipboardModule } from 'ngx-clipboard';
+import { AppComponent } from './app.component';
 
-import { RhymeService } from "app/rhyme.service";
+import { ClipboardButtonComponent } from './clipboard-button/clipboard-button.component';
 import { PoemCoupletComponent } from './poem-couplet/poem-couplet.component';
 import { PoemCoupletFocusService } from './poem-couplet/poem-couplet-focus.service';
-
+import { RhymeService } from "app/rhyme.service";
 import { RhymeSuggestionComponent } from './poem-couplet/rhyme-suggestion/rhyme-suggestion.component';
-import { ClipboardButtonComponent } from './clipboard-button/clipboard-button.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +31,7 @@ import { ClipboardButtonComponent } from './clipboard-button/clipboard-button.co
     JsonpModule,
     ClipboardModule,
     SweetAlert2Module.forRoot({
-        buttonsStyling: false
+      buttonsStyling: false
     })
   ],
   providers: [RhymeService, PoemCoupletFocusService],

@@ -1,5 +1,5 @@
-import { Injectable, ElementRef } from '@angular/core';
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { Injectable, ElementRef } from '@angular/core';
 import { PoemCoupletComponent } from './poem-couplet.component';
 
 @Injectable()
