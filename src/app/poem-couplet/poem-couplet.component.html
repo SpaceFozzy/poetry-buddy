@@ -7,7 +7,7 @@
       class="form-control input"
       autofocus 
       placeholder="Enter your first line here..."
-      [(ngModel)]="stanza.line1" 
+      [(ngModel)]="coupletLines.line1" 
       (keyup)="inputUpdate1($event)" 
       (keyup.enter)="focusNextInput()"
       (focus)="onFocus($event)" >
@@ -18,7 +18,7 @@
       maxlength="120" 
       class="form-control input"
       placeholder="Enter a rhyming line here..."
-      [(ngModel)]="stanza.line2" 
+      [(ngModel)]="coupletLines.line2" 
       (focus)="onFocus($event)" 
       (keyup.enter)="focusNextCouplet()" >
 
@@ -33,10 +33,10 @@
 
   <div id="printed-poem-container">
     <p class="printed" *ngIf="showText">
-      {{stanza.line1}}
+      {{coupletLines.line1}}
     </p>
     <p class="printed" *ngIf="showText">
-      {{stanza.line2}}
+      {{coupletLines.line2}}
     </p>
   </div>
 

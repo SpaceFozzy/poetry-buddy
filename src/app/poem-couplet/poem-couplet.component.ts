@@ -21,7 +21,7 @@ import { Stanza } from "../shared/stanza.model";
 export class PoemCoupletComponent implements OnInit {
   @ViewChild('coupletInput1') private coupletInput1;
   @ViewChild('coupletInput2') private coupletInput2;
-  @Input() stanza: Stanza;
+  @Input() coupletLines: Stanza;
   @Input() coupletIndex: number; // Used to move focus between couplets on enter press
   @Input() showText: boolean;
 
@@ -156,7 +156,7 @@ export class PoemCoupletComponent implements OnInit {
   }
 
   onRhymeSelected($event) {
-    this.stanza.line2 += $event;
+    this.coupletLines.line2 += $event;
   }
 
 }
