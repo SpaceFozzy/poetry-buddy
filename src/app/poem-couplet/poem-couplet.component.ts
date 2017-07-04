@@ -41,9 +41,9 @@ export class PoemCoupletComponent implements OnInit {
   constructor(
     private rhymeService: RhymeService,
     private focusService: PoemCoupletFocusService,
-    // elementRef is used as a hook by the poem-couplet-focusservice to
+    // element is used as a hook by the poem-couplet-focusservice to
     // manually shift focus to this element
-    public elementRef: ElementRef
+    public element: ElementRef
   ) { }
 
   ngOnInit() {
@@ -56,7 +56,7 @@ export class PoemCoupletComponent implements OnInit {
     });
 
     this.focusService.focusedCoupletElement$.subscribe((element: ElementRef) => {
-      if (element !== this.elementRef) {
+      if (element !== this.element) {
         this.focus = false;
       }
     });

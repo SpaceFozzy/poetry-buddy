@@ -20,7 +20,7 @@ export class PoemCoupletFocusService {
   }
 
   coupletFocussed(couplet: PoemCoupletComponent) {
-    this.focusedCoupletElement.next(couplet.elementRef);
+    this.focusedCoupletElement.next(couplet.element);
   }
 
 }
