@@ -1,3 +1,6 @@
+//TODO: remove enter press check and bind to enterpress event on inputs
+//TODO: see about removing inputObservable$
+
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject'
 import { RhymeService } from "app/rhyme.service";
@@ -19,7 +22,7 @@ export class PoemCoupletComponent implements OnInit {
   @ViewChild('coupletInput1') private coupletInput1;
   @ViewChild('coupletInput2') private coupletInput2;
   @Input() stanza: Stanza;
-  @Input() coupletIndex: number;
+  @Input() coupletIndex: number; // Used to move focus between couplets on enter press
   @Input() showText: boolean;
 
   //Observable sources
@@ -46,10 +49,10 @@ export class PoemCoupletComponent implements OnInit {
 
   ngOnInit() {
     // Subscribe to the focus service to allow enter presses to change focus
-    // between components
+    // between poem-couplet components
     this.poemCoupletFocusService.focusedCouplet$.subscribe((index) => {
       if (index === this.coupletIndex) {
-        this.setFocusToThisCouplet();
+        this.setFocus();
       }
     });
 
@@ -67,7 +70,7 @@ export class PoemCoupletComponent implements OnInit {
       });
   }
 
-  setFocusToThisCouplet(): void {
+  setFocus(): void {
     if (this.coupletInput1) {
       this.coupletInput1.nativeElement.focus()
     } else {
@@ -119,7 +122,7 @@ export class PoemCoupletComponent implements OnInit {
     // If the key pressed is enter, switch focus to the next couplet rather than
     // emitting a new input change. 
     if (this.checkForEnterPress($event)) {
-      this.focusNextInput($event);
+      //this.focusNextInput($event);
     } else {
       let newSearch = this.getLastWordInPhrase(words);
 
@@ -136,27 +139,16 @@ export class PoemCoupletComponent implements OnInit {
   }
 
   focusNextInput($event): void {
-    // If the next input element is the next input element sibling (i.e. going
-    // from line one to line two), focus on that element. Otherwise, let the
-    // couplet focus service handle switching focus to the next couplet in the
-    // poem.
-    let nextElement = $event.target.nextElementSibling;
-    if (nextElement && 'type' in nextElement && nextElement.type === "text") {
-      nextElement.focus();
-    } else {
-      this.poemCoupletFocusService.coupletFinished(this.coupletIndex);
-    }
+    this.coupletInput2.nativeElement.focus();
+  }
+
+  focusNextCouplet() {
+    this.poemCoupletFocusService.coupletFinished(this.coupletIndex);
   }
 
   onFocus($event): void {
     this.focus = true;
     this.poemCoupletFocusService.coupletFocussed(this);
-  }
-
-  onLine2Keyup($event): void {
-    if (this.checkForEnterPress($event)) {
-      this.focusNextInput($event);
-    }
   }
 
   checkForEnterPress($event): boolean {

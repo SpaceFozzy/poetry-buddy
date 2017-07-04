@@ -9,6 +9,7 @@
       placeholder="Enter your first line here..."
       [(ngModel)]="stanza.line1" 
       (keyup)="inputUpdate1($event)" 
+      (keyup.enter)="focusNextInput()"
       (focus)="onFocus($event)" >
 
   <input #coupletInput2 
@@ -19,7 +20,7 @@
       placeholder="Enter a rhyming line here..."
       [(ngModel)]="stanza.line2" 
       (focus)="onFocus($event)" 
-      (keyup)="onLine2Keyup($event)" >
+      (keyup.enter)="focusNextCouplet()" >
 
   <rhyme-suggestion 
       *ngIf="focus && searchText && showText===false" 
