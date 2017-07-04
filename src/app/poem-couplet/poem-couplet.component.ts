@@ -41,8 +41,6 @@ export class PoemCoupletComponent implements OnInit {
   constructor(
     private rhymeService: RhymeService,
     private focusService: PoemCoupletFocusService,
-    // element is used as a hook by the poem-couplet-focusservice to
-    // manually shift focus to this element
     public element: ElementRef
   ) { }
 
