@@ -16,7 +16,7 @@ const rhymeServiceStub = {
 };
 
 const poemCoupletFocusServiceStub = {
-  focusedCouplet$: Observable.create(observer => { }),
+  focusedCoupletIndex$: Observable.create(observer => { }),
   focusedCoupletElement$: Observable.create(observer => { })
 };
 
@@ -41,7 +41,7 @@ describe('PoemCoupletComponent', () => {
     fixture = TestBed.createComponent(PoemCoupletComponent);
     component = fixture.componentInstance;
     component.showText = false;
-    component.stanza = {
+    component.coupletLines = {
       type: "couplet",
       line1: "",
       line2: ""

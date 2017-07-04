@@ -50,7 +50,7 @@ export class PoemCoupletComponent implements OnInit {
   ngOnInit() {
     // Subscribe to the focus service to allow enter presses to change focus
     // between poem-couplet components
-    this.poemCoupletFocusService.focusedCouplet$.subscribe((index) => {
+    this.poemCoupletFocusService.focusedCoupletIndex$.subscribe((index) => {
       if (index === this.coupletIndex) {
         this.setFocus();
       }

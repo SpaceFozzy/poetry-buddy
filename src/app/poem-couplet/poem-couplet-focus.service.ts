@@ -10,7 +10,7 @@ export class PoemCoupletFocusService {
   private focusedCoupletElement: BehaviorSubject<ElementRef> = new BehaviorSubject(null);
 
   //Observable streams
-  focusedCouplet$ = this.focusedCouplet.asObservable();
+  focusedCoupletIndex$ = this.focusedCouplet.asObservable();
   focusedCoupletElement$ = this.focusedCoupletElement.asObservable();
 
   constructor() { }

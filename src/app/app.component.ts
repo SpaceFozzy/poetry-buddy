@@ -26,7 +26,7 @@ export class AppComponent {
   ) { }
 
   ngOnInit() {
-    this.poemCoupletFocusService.focusedCouplet$.subscribe((coupletToFocus) => {
+    this.poemCoupletFocusService.focusedCoupletIndex$.subscribe((coupletToFocus) => {
       if (coupletToFocus > this.poem.length - 1) {
         this.poem.push(this.createNewCouplet());
         this.poemCoupletFocusService.coupletFinished(coupletToFocus - 1);
