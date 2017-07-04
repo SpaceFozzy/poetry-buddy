@@ -34,7 +34,7 @@ export class AppComponent {
   addCoupletIfNone(coupletIndex: number) {
     if (coupletIndex > this.poem.length - 1) {
       this.addCouplet();
-      this.focusService.coupletFinished(coupletIndex - 1);
+      this.focusService.focusCouplet(coupletIndex);
     }
   }
 

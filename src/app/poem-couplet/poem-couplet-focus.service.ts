@@ -15,8 +15,8 @@ export class PoemCoupletFocusService {
 
   constructor() { }
 
-  coupletFinished(index: number) {
-    this.focusedCouplet.next(index + 1);
+  focusCouplet(index: number) {
+    this.focusedCouplet.next(index);
   }
 
   coupletFocussed(couplet: PoemCoupletComponent) {

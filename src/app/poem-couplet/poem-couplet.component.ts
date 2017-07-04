@@ -136,7 +136,7 @@ export class PoemCoupletComponent implements OnInit {
   }
 
   focusNextCouplet() : void {
-    this.focusService.coupletFinished(this.coupletIndex);
+    this.focusService.focusCouplet(this.coupletIndex + 1);
   }
 
   onFocus(): void {
