@@ -22,20 +22,25 @@ export class AppComponent {
   ]
 
   constructor(
-    private poemCoupletFocusService: PoemCoupletFocusService
+    private focusService: PoemCoupletFocusService
   ) { }
 
   ngOnInit() {
-    this.poemCoupletFocusService.focusedCoupletIndex$.subscribe((coupletToFocus) => {
-      if (coupletToFocus > this.poem.length - 1) {
-        this.poem.push(this.createNewCouplet());
-        this.poemCoupletFocusService.coupletFinished(coupletToFocus - 1);
-      }
+    this.focusService.focusedCoupletIndex$.subscribe((coupletIndex) => {
+      this.addCoupletIfNone(coupletIndex);
     });
   }
 
-  insertCouplet() {
-    this.poem.push(this.createNewCouplet());
+  addCoupletIfNone(coupletIndex: number) {
+    if (coupletIndex > this.poem.length - 1) {
+      this.addCouplet();
+      this.focusService.coupletFinished(coupletIndex - 1);
+    }
+  }
+
+  addCouplet() {
+    let newCouplet = this.createNewCouplet()
+    this.poem.push(newCouplet);
   }
 
   createNewCouplet(): Stanza {

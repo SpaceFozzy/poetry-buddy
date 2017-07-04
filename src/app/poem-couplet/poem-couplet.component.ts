@@ -1,4 +1,3 @@
-//TODO: remove enter press check and bind to enterpress event on inputs
 //TODO: see about removing inputObservable$
 
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
@@ -40,8 +39,8 @@ export class PoemCoupletComponent implements OnInit {
   public searchText: string = null;
 
   constructor(
-    private service: RhymeService,
-    private poemCoupletFocusService: PoemCoupletFocusService,
+    private rhymeService: RhymeService,
+    private focusService: PoemCoupletFocusService,
     // elementRef is used as a hook by the poem-couplet-focusservice to
     // manually shift focus to this element
     public elementRef: ElementRef
@@ -50,13 +49,13 @@ export class PoemCoupletComponent implements OnInit {
   ngOnInit() {
     // Subscribe to the focus service to allow enter presses to change focus
     // between poem-couplet components
-    this.poemCoupletFocusService.focusedCoupletIndex$.subscribe((index) => {
+    this.focusService.focusedCoupletIndex$.subscribe((index) => {
       if (index === this.coupletIndex) {
         this.setFocus();
       }
     });
 
-    this.poemCoupletFocusService.focusedCoupletElement$.subscribe((element: ElementRef) => {
+    this.focusService.focusedCoupletElement$.subscribe((element: ElementRef) => {
       if (element !== this.elementRef) {
         this.focus = false;
       }
@@ -91,7 +90,7 @@ export class PoemCoupletComponent implements OnInit {
     this.currentWord = lastWord;
     this.isLoading = true;
 
-    this.service.search(lastWord)
+    this.rhymeService.search(lastWord)
       .subscribe((response) => {
         this.updateRhymeHints(response);
       }, (error) => {
@@ -137,12 +136,12 @@ export class PoemCoupletComponent implements OnInit {
   }
 
   focusNextCouplet() : void {
-    this.poemCoupletFocusService.coupletFinished(this.coupletIndex);
+    this.focusService.coupletFinished(this.coupletIndex);
   }
 
   onFocus(): void {
     this.focus = true;
-    this.poemCoupletFocusService.coupletFocussed(this);
+    this.focusService.coupletFocussed(this);
   }
 
   onRhymeSelected(rhyme: string) {
