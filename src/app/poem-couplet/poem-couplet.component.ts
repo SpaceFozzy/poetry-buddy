@@ -69,18 +69,6 @@ export class PoemCoupletComponent implements OnInit {
       });
   }
 
-  setFocus(): void {
-    if (this.coupletInput1) {
-      this.coupletInput1.nativeElement.focus()
-    } else {
-      // If the user presses enter on the last line of the previous couplet, a
-      // new couplet will be created. If this couplet is brand new and hasn't had
-      // time to render, set a small delay to give it time to render before setting
-      // focus to the input.
-      setTimeout(() => { this.coupletInput1.nativeElement.focus() }, 10);
-    }
-  }
-
   getLastWordInPhrase(phrase: string): string {
     return phrase.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
   }
@@ -137,6 +125,18 @@ export class PoemCoupletComponent implements OnInit {
 
   focusNextCouplet() : void {
     this.focusService.focusCouplet(this.coupletIndex + 1);
+  }
+
+  setFocus(): void {
+    if (this.coupletInput1) {
+      this.coupletInput1.nativeElement.focus()
+    } else {
+      // If the user presses enter on the last line of the previous couplet, a
+      // new couplet will be created. If this couplet is brand new and hasn't had
+      // time to render, set a small delay to give it time to render before setting
+      // focus to the input.
+      setTimeout(() => { this.coupletInput1.nativeElement.focus() }, 10);
+    }
   }
 
   onFocus(): void {
