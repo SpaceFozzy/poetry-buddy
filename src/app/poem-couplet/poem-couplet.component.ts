@@ -110,8 +110,8 @@ export class PoemCoupletComponent implements OnInit {
     this.isLoading = false;
   }
 
-  inputUpdate1($event): boolean {
-    let words = $event.target.value.trim();
+  inputUpdate1(words: string): boolean {
+    words = words.trim();
 
     if (!words) {
       this.rhymeHints = [];
@@ -119,44 +119,34 @@ export class PoemCoupletComponent implements OnInit {
       return false;
     }
 
-    // If the key pressed is enter, switch focus to the next couplet rather than
-    // emitting a new input change. 
-    if (this.checkForEnterPress($event)) {
-      //this.focusNextInput($event);
-    } else {
-      let newSearch = this.getLastWordInPhrase(words);
+    let newSearch = this.getLastWordInPhrase(words);
 
-      if (newSearch === this.searchText) {
-        return false;
-      }
-
-      this.isLoading = true;
-      this.unchanged = false;
-      this.searchText = newSearch;
-      this.inputSubject.next(words);
+    if (newSearch === this.searchText) {
+      return false;
     }
+
+    this.isLoading = true;
+    this.unchanged = false;
+    this.searchText = newSearch;
+    this.inputSubject.next(words);
 
   }
 
-  focusNextInput($event): void {
+  focusSecondInput(): void {
     this.coupletInput2.nativeElement.focus();
   }
 
-  focusNextCouplet() {
+  focusNextCouplet() : void {
     this.poemCoupletFocusService.coupletFinished(this.coupletIndex);
   }
 
-  onFocus($event): void {
+  onFocus(): void {
     this.focus = true;
     this.poemCoupletFocusService.coupletFocussed(this);
   }
 
-  checkForEnterPress($event): boolean {
-    return ($event.keyCode === 13);
-  }
-
-  onRhymeSelected($event) {
-    this.coupletLines.line2 += $event;
+  onRhymeSelected(rhyme: string) {
+    this.coupletLines.line2 += rhyme;
   }
 
 }

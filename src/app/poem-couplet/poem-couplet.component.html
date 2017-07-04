@@ -8,9 +8,9 @@
       autofocus 
       placeholder="Enter your first line here..."
       [(ngModel)]="coupletLines.line1" 
-      (keyup)="inputUpdate1($event)" 
-      (keyup.enter)="focusNextInput()"
-      (focus)="onFocus($event)" >
+      (keyup)="inputUpdate1(coupletInput1.value)" 
+      (keyup.enter)="focusSecondInput()"
+      (focus)="onFocus()" >
 
   <input #coupletInput2 
       *ngIf="showText===false"
@@ -19,7 +19,7 @@
       class="form-control input"
       placeholder="Enter a rhyming line here..."
       [(ngModel)]="coupletLines.line2" 
-      (focus)="onFocus($event)" 
+      (focus)="onFocus()" 
       (keyup.enter)="focusNextCouplet()" >
 
   <rhyme-suggestion 

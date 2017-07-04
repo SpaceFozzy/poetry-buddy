@@ -10,7 +10,7 @@
   </div>
 
   <poem-couplet *ngFor="let stanza of poem; let i = index" 
-      [stanza]="stanza" 
+      [coupletLines]="stanza" 
       [showText]="showText" 
       [coupletIndex]="i">
   </poem-couplet>
