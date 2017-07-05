@@ -22,7 +22,7 @@
       (keyup.enter)="focusNextCouplet()" >
 
   <rhyme-suggestion 
-      *ngIf="focus && searchText && showText===false" 
+      *ngIf="isFocused && searchText && showText===false" 
       [currentWord]="currentWord" 
       [searchText]="searchText" 
       [isLoading]="isLoading" 
