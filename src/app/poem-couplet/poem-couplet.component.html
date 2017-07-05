@@ -1,14 +1,13 @@
-<div class="couplet-stripe" [ngClass]="{'active-couplet-stripe': focus && showText===false}">
+<div class="couplet-stripe" [ngClass]="{'active-couplet-stripe': isFocused && showText===false}">
 
   <input #coupletInput1 
       *ngIf="showText===false" 
-      type="text" 
+      type="text"
       maxlength="120" 
       class="form-control input"
       autofocus 
       placeholder="Enter your first line here..."
-      [(ngModel)]="coupletLines.line1" 
-      (keyup)="inputUpdate1(coupletInput1.value)" 
+      [formControl]="line1Input"
       (keyup.enter)="focusSecondInput()"
       (focus)="onFocus()" >
 

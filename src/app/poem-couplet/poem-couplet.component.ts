@@ -1,11 +1,10 @@
-//TODO: see about removing inputObservable$
-
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject'
+import { FormControl } from '@angular/forms';
 import { RhymeService } from "app/rhyme.service";
-import { Observable } from "rxjs/Observable";
+
 import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 
 import { PoemCoupletFocusService } from "./poem-couplet-focus.service";
@@ -24,19 +23,14 @@ export class PoemCoupletComponent implements OnInit {
   @Input() coupletIndex: number; // Used to move focus between couplets on enter press
   @Input() showText: boolean;
 
-  //Observable sources
-  private inputSubject: BehaviorSubject<string> = new BehaviorSubject("");
-  //Observable streams
-  public inputObservable$ = this.inputSubject.asObservable();
-
+  private line1Input = new FormControl();
   private rhymeHints: string[] = [];
-  private searchFailed: boolean = false;
-  private unchanged: boolean = true;
   private isLoading: boolean = false;
+  private searchFailed: boolean = false;
 
-  public focus: boolean = false;
   public currentWord: string = "";
   public searchText: string = null;
+  public isFocused: boolean = false;
 
   constructor(
     private rhymeService: RhymeService,
@@ -45,38 +39,47 @@ export class PoemCoupletComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // Subscribe to the focus service to allow enter presses to change focus
-    // between poem-couplet components
+    this.subscribeToLine1InputChanges();
+    this.subscribeToFocusService();
+  }
+
+  // Subscribe to the input for line 1 to fetch rhymes when needed
+  subscribeToLine1InputChanges() {
+    this.line1Input.valueChanges
+      .do((words) => {
+        this.coupletLines.line1 = words; // First update the line 1 data model from the form model
+      })
+      .map(words => this.getLastWordInPhrase(words).trim()) // Then pass on an observable of the last trimmed word
+      .distinctUntilChanged()
+      .do((word) => {
+        this.isLoading = true;
+        this.searchText = word;
+      })
+      .debounceTime(1000)
+      .subscribe((word) => {
+        this.getRhymes(word);
+      });
+  }
+
+  subscribeToFocusService() {
     this.focusService.focusedCoupletIndex$.subscribe((index) => {
-      if (index === this.coupletIndex) {
-        this.setFocus();
-      }
+      if (index === this.coupletIndex) { this.setFocus(); }
     });
 
     this.focusService.focusedCoupletElement$.subscribe((element: ElementRef) => {
-      if (element !== this.element) {
-        this.focus = false;
-      }
+      if (element !== this.element) { this.isFocused = false; }
     });
-
-    //Subscribe to the input observable to fetch rhymes as the input text changes.
-    this.inputObservable$
-      .debounceTime(1000)
-      .subscribe((words) => {
-        this.getRhymesForLastWordInPhrase(words);
-      });
   }
 
   getLastWordInPhrase(phrase: string): string {
     return phrase.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
   }
 
-  getRhymesForLastWordInPhrase(phrase: string): void {
-    let lastWord = this.getLastWordInPhrase(phrase);
-    this.currentWord = lastWord;
+  getRhymes(wordToRhyme: string): void {
+    this.currentWord = wordToRhyme;
     this.isLoading = true;
 
-    this.rhymeService.search(lastWord)
+    this.rhymeService.search(wordToRhyme)
       .subscribe((response) => {
         this.updateRhymeHints(response);
       }, (error) => {
@@ -95,33 +98,15 @@ export class PoemCoupletComponent implements OnInit {
     this.isLoading = false;
   }
 
-  inputUpdate1(words: string): boolean {
-    words = words.trim();
-
-    if (!words) {
-      this.rhymeHints = [];
-      this.searchText = "";
-      return false;
-    }
-
-    let newSearch = this.getLastWordInPhrase(words);
-
-    if (newSearch === this.searchText) {
-      return false;
-    }
-
-    this.isLoading = true;
-    this.unchanged = false;
-    this.searchText = newSearch;
-    this.inputSubject.next(words);
-
+  onRhymeSelected(rhyme: string) {
+    this.coupletLines.line2 += rhyme;
   }
 
   focusSecondInput(): void {
     this.coupletInput2.nativeElement.focus();
   }
 
-  focusNextCouplet() : void {
+  focusNextCouplet(): void {
     this.focusService.focusCouplet(this.coupletIndex + 1);
   }
 
@@ -129,21 +114,15 @@ export class PoemCoupletComponent implements OnInit {
     if (this.coupletInput1) {
       this.coupletInput1.nativeElement.focus()
     } else {
-      // If the user presses enter on the last line of the previous couplet, a
-      // new couplet will be created. If this couplet is brand new and hasn't had
-      // time to render, set a small delay to give it time to render before setting
-      // focus to the input.
+      // If this couplet is new and hasn't had time to render, set a small
+      // delay to give it time to render before setting focus to the input.
       setTimeout(() => { this.coupletInput1.nativeElement.focus() }, 10);
     }
   }
 
   onFocus(): void {
-    this.focus = true;
+    this.isFocused = true;
     this.focusService.coupletFocussed(this);
-  }
-
-  onRhymeSelected(rhyme: string) {
-    this.coupletLines.line2 += rhyme;
   }
 
 }

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';  // <-- #1 import module
 import { HttpModule, JsonpModule } from '@angular/http';
 
 import { SweetAlert2Module } from '@toverux/ngsweetalert2';
@@ -26,6 +27,7 @@ import { RhymeSuggestionComponent } from './poem-couplet/rhyme-suggestion/rhyme-
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     NgbModule.forRoot(),
     JsonpModule,
