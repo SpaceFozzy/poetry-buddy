@@ -1,9 +1,11 @@
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { FormControl } from '@angular/forms';
 
 import { PoemCoupletComponent } from './poem-couplet.component';
 import { FormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from '@angular/forms';  
 
 import { RhymeService } from "app/rhyme.service";
 import { PoemCoupletFocusService } from './poem-couplet-focus.service';
@@ -26,7 +28,7 @@ describe('PoemCoupletComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule],
+      imports: [FormsModule, ReactiveFormsModule],
       declarations: [PoemCoupletComponent],
       providers: [
         { provide: RhymeService, useValue: rhymeServiceStub },
@@ -75,7 +77,7 @@ describe('PoemCoupletComponent', () => {
   });
 
   it('the rhyme-suggestion element does not exist when focus is false', () => {
-    component.focus = false;
+    component.isFocused = false;
     fixture.detectChanges();
 
     let rhymeSuggestionCount = fixture.debugElement.nativeElement.querySelectorAll('rhyme-suggestion').length
