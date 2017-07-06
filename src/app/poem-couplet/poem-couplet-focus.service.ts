@@ -1,6 +1,8 @@
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { Observable } from "rxjs/Observable";
 import { Injectable, ElementRef } from '@angular/core';
 import { PoemCoupletComponent } from './poem-couplet.component';
+
 
 @Injectable()
 export class PoemCoupletFocusService {
@@ -10,8 +12,8 @@ export class PoemCoupletFocusService {
   private focusedCoupletElement: BehaviorSubject<ElementRef> = new BehaviorSubject(null);
 
   // Observable streams
-  focusedCoupletIndex$ = this.focusedCouplet.asObservable();
-  focusedCoupletElement$ = this.focusedCoupletElement.asObservable();
+  focusedCoupletIndex$: Observable<number> = this.focusedCouplet.asObservable();
+  focusedCoupletElement$: Observable<ElementRef> = this.focusedCoupletElement.asObservable();
 
   constructor() { }
 
