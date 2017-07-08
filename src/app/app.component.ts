@@ -11,7 +11,6 @@ import { Stanza } from './shared/stanza.model'
 
 export class AppComponent {
   showText: boolean = false;
-  searchFailed: boolean = false;
   currentWord: boolean = null;
   poem: Stanza[] = [
     {

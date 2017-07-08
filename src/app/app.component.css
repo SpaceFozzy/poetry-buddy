@@ -7,6 +7,10 @@ h1,h2 {
   font-weight:normal;
 }
 
+p {
+  text-align: center
+}
+
 #caption {
   font-family: 'Love Ya Like A Sister', cursive;
   margin-bottom:20px;
