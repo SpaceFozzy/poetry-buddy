@@ -16,7 +16,11 @@
     Loading rhymes for "{{searchText}}"
   </p>
 
-  <p id="no-rhymes-found" *ngIf="currentWord && !isLoading && rhymeHints.length === 0">
+  <p id="loading-rhymes" *ngIf="searchFailed && !isLoading">
+    <em>Currently unable to connect to rhyme server.</em>
+  </p>
+
+  <p id="no-rhymes-found" *ngIf="currentWord && !isLoading && rhymeHints.length === 0 && !searchFailed">
     <em>No rhymes found for "{{currentWord}}"</em>
   </p>
 
