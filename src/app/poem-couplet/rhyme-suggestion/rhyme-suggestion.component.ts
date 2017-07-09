@@ -21,7 +21,7 @@ export class RhymeSuggestionComponent implements OnInit {
   @Input() currentWord: string = null;
   @Input() searchText: string = null;
   @Input() isLoading: boolean;
-  @Input() searchFailed: boolean;
+  @Input() searchError: boolean;
   @Input() rhymeHints: string[];
   @Output() onRhymeSelected: EventEmitter<string> = new EventEmitter<string>();
 

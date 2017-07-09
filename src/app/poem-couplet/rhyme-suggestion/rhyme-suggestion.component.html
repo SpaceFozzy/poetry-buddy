@@ -1,4 +1,4 @@
-<div class="rhyme-panel" *ngIf="!searchFailed; else errorContent">
+<div class="rhyme-panel" *ngIf="!searchError; else errorContent">
   
   <!-- Loading spinner -->
   <span #loadingContent *ngIf="isLoading; else rhymeContent">

@@ -26,7 +26,7 @@ export class PoemCoupletComponent implements OnInit {
   private line1Input = new FormControl();
   private rhymeHints: string[] = [];
   private isLoading: boolean = false;
-  private searchFailed: boolean = false;
+  private searchError: boolean = false;
 
   public currentWord: string = "";
   public searchText: string = null;
@@ -89,12 +89,12 @@ export class PoemCoupletComponent implements OnInit {
 
   updateRhymeHints(hints: string[]): void {
     this.rhymeHints = hints;
-    this.searchFailed = false;
+    this.searchError = false;
     this.isLoading = false;
   }
 
   onRhymeHintsFail(error): void {
-    this.searchFailed = true;
+    this.searchError = true;
     this.isLoading = false;
   }
 
