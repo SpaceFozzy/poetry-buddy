@@ -1,13 +1,6 @@
-<!--Sweet alerts using ngsweetalert2 by toverux: https://github.com/toverux/ngsweetalert2 -->
-<swal #confirmAlert 
-    title="Add {{selectedWord}}?"
-    text='This will add "{{selectedWord}}" to your second line.'
-    [options]="{ confirmButtonText: 'Yes', showCancelButton: true, cancelButtonText: 'No' }"
-    type="question">
-</swal>
-
-<div id="rhyme-panel">
+<div class="rhyme-panel" *ngIf="!searchFailed; else errorMessage">
   
+  <!-- Loading spinner -->
   <span *ngIf="isLoading; else rhymeContent">
     <span id="spinner-container">
       <i class="fa fa-spin fa-cog fa-5x"></i>
@@ -17,7 +10,7 @@
     </p>
   </span>
 
-  <!-- is not loading -->
+  <!-- Rhyme suggestion list -->
   <ng-template #rhymeContent>
     <p id="rhymes-found" *ngIf="rhymeHints.length > 0">
       Rhymes with "{{currentWord}}":
@@ -31,3 +24,19 @@
   </ng-template>
 
 </div>
+
+<ng-template #errorMessage>
+  <div class="rhyme-panel">
+    <p id="loading-rhymes" *ngIf="searchFailed">
+      <em>Currently unable to connect to rhyme server.</em>
+    </p>
+  </div>
+</ng-template>
+
+<!--Sweet alerts using ngsweetalert2 by toverux: https://github.com/toverux/ngsweetalert2 -->
+<swal #confirmAlert 
+    title="Add {{selectedWord}}?"
+    text='This will add "{{selectedWord}}" to your second line.'
+    [options]="{ confirmButtonText: 'Yes', showCancelButton: true, cancelButtonText: 'No' }"
+    type="question">
+</swal>

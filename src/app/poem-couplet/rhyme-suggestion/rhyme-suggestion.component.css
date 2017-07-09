@@ -1,4 +1,4 @@
-#rhyme-panel {
+.rhyme-panel {
   background: #323a40;
   color: #f9f6ee;
   width:100%;
@@ -35,7 +35,7 @@
   cursor: pointer;
 }
 
-#rhyme-panel p {
+.rhyme-panel p {
   float:left;
   margin-left:10px;
   margin-top:21px;
