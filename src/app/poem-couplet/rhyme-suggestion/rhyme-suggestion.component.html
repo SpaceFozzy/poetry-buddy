@@ -1,7 +1,7 @@
-<div class="rhyme-panel" *ngIf="!searchFailed; else errorMessage">
+<div class="rhyme-panel" *ngIf="!searchFailed; else errorContent">
   
   <!-- Loading spinner -->
-  <span *ngIf="isLoading; else rhymeContent">
+  <span #loadingContent *ngIf="isLoading; else rhymeContent">
     <span id="spinner-container">
       <i class="fa fa-spin fa-cog fa-5x"></i>
     </span>
@@ -25,7 +25,7 @@
 
 </div>
 
-<ng-template #errorMessage>
+<ng-template #errorContent>
   <div class="rhyme-panel">
     <p id="loading-rhymes" *ngIf="searchFailed">
       <em>Currently unable to connect to rhyme server.</em>
