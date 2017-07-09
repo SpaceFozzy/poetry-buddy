@@ -1,10 +1,19 @@
 h1,h2 {
-  padding:40px 10px 0 10px;
+  padding:0 10px 0 10px;
   margin-bottom:20px;
+  margin-top:0;
   font-size:5em;
   text-align:center;
   font-family: 'Love Ya Like A Sister', cursive;
   font-weight:normal;
+}
+
+#logo-container {
+  text-align:center;
+}
+
+#logo {
+  width:300px;
 }
 
 p {
@@ -56,6 +65,10 @@ button:hover{
 
   h2 {
     font-size:1.1em;
+  }
+
+  #logo {
+    width:150px;
   }
 
   #writing-space {
