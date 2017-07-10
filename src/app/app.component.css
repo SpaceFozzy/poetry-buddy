@@ -50,9 +50,9 @@ button:hover{
 }
 
 #button-container {
+  margin: 10px 0 0 15px;
   margin-top:10px;
   margin-left:15px;
-  margin-bottom:500px;
   text-align:center;
 }
 
