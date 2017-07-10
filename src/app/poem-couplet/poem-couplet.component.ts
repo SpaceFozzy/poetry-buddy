@@ -49,7 +49,7 @@ export class PoemCoupletComponent implements OnInit {
       .do((words) => {
         this.coupletLines.line1 = words; // First update the line 1 data model from the form model
       })
-      .map(words => this.getLastWordInPhrase(words).trim()) // Then pass on an observable of the last trimmed word
+      .map(words => this.getLastWordInPhrase(words)) // Then pass on an observable of the last trimmed word
       .distinctUntilChanged()
       .do((word) => {
         this.isLoading = true;
@@ -72,7 +72,7 @@ export class PoemCoupletComponent implements OnInit {
   }
 
   getLastWordInPhrase(phrase: string): string {
-    return phrase.split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+    return phrase.trim().split(" ").pop().replace(/[?.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
   }
 
   getRhymes(wordToRhyme: string): void {
