@@ -28,7 +28,6 @@ export class PoemCoupletComponent implements OnInit {
   private isLoading: boolean = false;
   private searchError: boolean = false;
 
-  public currentWord: string = "";
   public searchText: string = null;
   public isFocused: boolean = false;
 
@@ -76,7 +75,6 @@ export class PoemCoupletComponent implements OnInit {
   }
 
   getRhymes(wordToRhyme: string): void {
-    this.currentWord = wordToRhyme;
     this.isLoading = true;
 
     this.rhymeService.search(wordToRhyme)

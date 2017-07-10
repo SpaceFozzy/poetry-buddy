@@ -13,10 +13,10 @@
   <!-- Rhyme suggestion list -->
   <ng-template #rhymeContent>
     <p id="rhymes-found" *ngIf="rhymeHints && rhymeHints.length > 0">
-      Rhymes with "{{currentWord}}":
+      Rhymes with "{{searchText}}":
     </p>
     <p id="no-rhymes-found" *ngIf="rhymeHints && rhymeHints.length === 0">
-      <em>No rhymes found for "{{currentWord}}"</em>
+      <em>No rhymes found for "{{searchText}}"</em>
     </p>
     <ul id="rhyme-list">
       <li (click)="onHintSelected(hint)" *ngFor="let hint of rhymeHints">{{hint}}</li>

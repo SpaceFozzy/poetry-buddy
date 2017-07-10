@@ -18,7 +18,6 @@ import { SwalComponent } from "@toverux/ngsweetalert2/dist/types+es2015-modules"
 
 export class RhymeSuggestionComponent implements OnInit {
   @ViewChild('confirmAlert') private confirmAlert: SwalComponent;
-  @Input() currentWord: string = null;
   @Input() searchText: string = null;
   @Input() isLoading: boolean;
   @Input() searchError: boolean;
