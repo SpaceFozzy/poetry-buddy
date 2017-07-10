@@ -56,7 +56,7 @@ describe('RhymeSuggestionComponent', () => {
   });
 
   it('should give the user feedback when no rhymes are found', () => {
-    component.currentWord = "test"
+    component.searchText = "test"
     component.isLoading = false;
     component.rhymeHints = [];
     fixture.detectChanges();
@@ -66,7 +66,7 @@ describe('RhymeSuggestionComponent', () => {
   });
 
   it('should give the user feedback when rhymes are found', () => {
-    component.currentWord = "test"
+    component.searchText = "test"
     component.isLoading = false;
     component.rhymeHints = ["best"];
     fixture.detectChanges();
