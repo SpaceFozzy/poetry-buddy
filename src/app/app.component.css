@@ -1,11 +1,14 @@
-h1,h2 {
+h1, h2 {
   padding:0 10px 0 10px;
   margin-bottom:20px;
   margin-top:0;
   font-size:5em;
   text-align:center;
-  font-family: 'Love Ya Like A Sister', cursive;
   font-weight:normal;
+}
+
+.scribbled {
+  font-family: 'Love Ya Like A Sister', cursive;
 }
 
 #logo-container {
@@ -21,7 +24,6 @@ p {
 }
 
 #caption {
-  font-family: 'Love Ya Like A Sister', cursive;
   margin-bottom:20px;
   max-width:90%;
   margin-left: auto;
