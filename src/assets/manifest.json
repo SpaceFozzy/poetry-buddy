@@ -21,5 +21,6 @@
     "sizes": "196x196"
   }],
   "display": "standalone",
-  "orientation": "portrait"
+  "orientation": "portrait",
+  "start_url": "/index.html"
 }
