@@ -58,6 +58,20 @@ button:hover{
   text-align:center;
 }
 
+/* 
+Used to hide content from regular users but remain for screen readers.
+Poetry Buddy's form inputs labels are hidden this way.
+From webaim.org.
+ */
+.screen-reader-only {
+  position:absolute;
+  left: -1000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+
 @media (max-width: 600px) {
 
   h1 {

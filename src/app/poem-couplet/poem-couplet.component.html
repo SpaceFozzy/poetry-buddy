@@ -1,22 +1,30 @@
 <div class="couplet-stripe" 
     [ngClass]="{'active-couplet-stripe': isFocused && showText===false}">
 
+  <label class="screen-reader-only" for="coupletInput1">
+    Couplet {{coupletIndex+1}} Line 1 Text
+  </label>
   <input #coupletInput1 
+      id="coupletInput1"
       *ngIf="showText===false" 
       type="text"
       maxlength="120" 
-      class="form-control input"
+      class="form-control"
       autofocus 
       placeholder="Enter your first line here..."
       [formControl]="line1Input"
       (keyup.enter)="focusSecondInput()"
       (focus)="onFocus()" >
 
-  <input #coupletInput2 
+  <label class="screen-reader-only" for="coupletInput2">
+    Couplet {{coupletIndex+1}} Line 2 Text
+  </label>
+  <input #coupletInput2
+      id="coupletInput2"
       *ngIf="showText===false"
       type="text" 
       maxlength="120" 
-      class="form-control input"
+      class="form-control"
       placeholder="Enter a rhyming line here..."
       [(ngModel)]="coupletLines.line2" 
       (focus)="onFocus()" 

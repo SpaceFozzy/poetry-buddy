@@ -1,4 +1,4 @@
-.input {
+input {
   border-radius: 5px;
   background: #62b989;
   list-style-type: none;
@@ -16,41 +16,53 @@
   margin-left:auto;
 }
 
-.input:focus {
+input:focus {
   outline: none !important;
   background: #719ECE;
   color: #eee;
 }
 
-input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-  color:    #a3e0be;
+input::-webkit-input-placeholder /* WebKit, Blink, Edge */
+{ 
+  color:    #fff;
+  opacity:  0.5;
 }
-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-  color:    #a3e0be;
-  opacity:  1;
+input:-moz-placeholder /* Mozilla Firefox 4 to 18 */
+{ 
+  color:    #fff;
+  opacity:  0.5;
 }
-input::-moz-placeholder { /* Mozilla Firefox 19+ */
-  color:    #a3e0be;
-  opacity:  1;
+input::-moz-placeholder /* Mozilla Firefox 19+ */
+{ 
+  color:    #fff;
+  opacity:  0.5;
 }
-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color:    #a3e0be;
+input:-ms-input-placeholder /* Internet Explorer 10-11 */
+{ 
+  color:    #fff;
+  opacity:  0.5;
+}
+input:focus::-webkit-input-placeholder /* WebKit, Blink, Edge */
+{ 
+  color:    #fff;
+  opacity:  0.5;
+}
+input:focus:-moz-placeholder /* Mozilla Firefox 4 to 18 */
+{ 
+  color:    #fff;
+  opacity:  0.5;
+}
+input:focus::-moz-placeholder /* Mozilla Firefox 19+ */
+{ 
+  color:    #fff;
+  opacity:  0.5;
+}
+input:focus:-ms-input-placeholder /* Internet Explorer 10-11 */
+{ 
+  color:    #fff;
+  opacity:  0.5;
 }
 
-input:focus::-webkit-input-placeholder{ /* WebKit, Blink, Edge */
-  color:    #a1ceff;
-}
-input:focus:-moz-placeholder{/* Mozilla Firefox 4 to 18 */
-  color:    #a1ceff;
-  opacity:  1;
-}
-input:focus::-moz-placeholder{/* Mozilla Firefox 19+ */
-  color:    #a1ceff;
-  opacity:  1;
-}
-input:focus:-ms-input-placeholder{/* Internet Explorer 10-11 */
-  color:    #a1ceff;
-}
 
 #printed-poem-container {
   max-width:750px;
