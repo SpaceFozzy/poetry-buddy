@@ -1,5 +1,5 @@
 import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
-import { PoemCoupletFocusService } from './poem-couplet/poem-couplet-focus.service';
+import { PoemCoupletFocusService } from './shared/poem-couplet-focus.service';
 import { Stanza } from './shared/stanza.model'
 
 @Component({

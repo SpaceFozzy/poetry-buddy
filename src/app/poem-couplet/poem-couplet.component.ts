@@ -1,13 +1,13 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { RhymeService } from "app/rhyme.service";
+import { RhymeService } from "./rhyme-service/rhyme.service";
 
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 
-import { PoemCoupletFocusService } from "./poem-couplet-focus.service";
+import { PoemCoupletFocusService } from "../shared/poem-couplet-focus.service";
 import { Stanza } from "../shared/stanza.model";
 
 @Component({

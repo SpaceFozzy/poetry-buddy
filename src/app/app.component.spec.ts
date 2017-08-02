@@ -4,8 +4,8 @@ import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 
-import { RhymeService } from "app/rhyme.service";
-import { PoemCoupletFocusService } from './poem-couplet/poem-couplet-focus.service';
+import { RhymeService } from "./poem-couplet/rhyme-service/rhyme.service";
+import { PoemCoupletFocusService } from './shared/poem-couplet-focus.service';
 import { Subscription } from "rxjs/Subscription";
 import { Observable } from "rxjs/Observable";
 import { ComponentFixture } from "@angular/core/testing";

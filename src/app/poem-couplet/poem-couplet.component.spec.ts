@@ -7,8 +7,8 @@ import { PoemCoupletComponent } from './poem-couplet.component';
 import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from '@angular/forms';  
 
-import { RhymeService } from "app/rhyme.service";
-import { PoemCoupletFocusService } from './poem-couplet-focus.service';
+import { RhymeService } from "./rhyme-service/rhyme.service";
+import { PoemCoupletFocusService } from '../shared/poem-couplet-focus.service';
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from "rxjs/Observable";
 
