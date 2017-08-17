@@ -23,7 +23,7 @@ export class PoemCoupletComponent implements OnInit {
   @Input() coupletIndex: number; // Used to move focus between couplets on enter press
   @Input() showText: boolean;
 
-  private line1Input = new FormControl();
+  private line1Input: FormControl = new FormControl();
   private rhymeHints: string[] = [];
   private isLoading: boolean = false;
   private searchError: boolean = false;
